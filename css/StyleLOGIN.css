@@ -1,0 +1,81 @@
+﻿body {
+    background-color: #4c4c4c;
+}
+
+.encabezado {
+    background-color: #AC1F2D;
+    width: 2% 100%;
+    /*text-align: center;*/
+}
+
+.textoSimple {
+    color: white;
+}
+
+.textoResaltado {
+    color: black;
+}
+
+.alinDerecha{
+    text-align: right;
+}
+
+.alinCentro {
+    text-align: center;
+    width: 33%;
+}
+
+/*PARA LA TABLA */
+.custom-table {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    border-collapse: collapse; /* Colapsa los bordes para evitar espacios */
+    margin-top: 20px; /* Separación desde el contenido superior */
+}
+
+    .custom-table th, .custom-table td {
+        /*border: 1px solid #ddd;*/ /* Borde para las celdas */
+        padding: 8px; /* Espacio interior */
+        text-align: center; /* Alineación del texto */
+    }
+
+    .custom-table th {
+        background-color: #f2f2f2; /* Color de fondo para el encabezado */
+        font-weight: bold; /* Negrita para el texto del encabezado */
+    }
+
+.centered-cell {
+    text-align: center; /* Centra horizontalmente */
+    vertical-align: middle; /* Centra verticalmente */
+    height: 100px; /* Ajusta la altura si es necesario */
+}
+
+.imgEncabezado {
+    max-width: 10%; /* Asegura que la imagen no exceda el ancho de la celda */
+}
+
+.estilotxtBox {
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    width: 90%;
+    padding: 7px;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    margin: 10px 0;
+}
+
+.boton {
+    border-style: none;
+    /*border-color: inherit;*/
+    border-width: medium;
+    border-radius: 5px;
+    width: 70%;
+    padding: 10px 0;
+    font-size: 20px;
+    color: black;
+    font-weight: 700;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+}
