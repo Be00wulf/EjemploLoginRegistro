@@ -170,7 +170,7 @@
     <table class="custom-table">
         <tr class="centered-cell">
             <td>
-                <asp:Button ID="ButtonGenerarForm" class="boton" runat="server" Text="Generar formulario"  />
+                <asp:Button ID="ButtonGenerarForm" class="boton" runat="server" Text="Generar formulario" OnClick="ButtonGenerarForm_Click"  />
             </td>
         </tr>
 
