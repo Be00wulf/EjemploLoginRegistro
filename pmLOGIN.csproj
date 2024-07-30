@@ -127,6 +127,7 @@
     <Content Include="img\MAJO LINEAS.png" />
     <Content Include="img\MAJOcctrcs.png" />
     <Content Include="pags\DatosRegistrados.aspx" />
+    <Content Include="pags\LogIn.aspx" />
     <Content Include="pags\Registro.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -224,6 +225,13 @@
     </Compile>
     <Compile Include="pags\DatosRegistrados.aspx.designer.cs">
       <DependentUpon>DatosRegistrados.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pags\LogIn.aspx.cs">
+      <DependentUpon>LogIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pags\LogIn.aspx.designer.cs">
+      <DependentUpon>LogIn.aspx</DependentUpon>
     </Compile>
     <Compile Include="pags\Registro.aspx.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
