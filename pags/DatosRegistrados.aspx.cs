@@ -32,16 +32,26 @@ namespace pmLOGIN.pags
 
             if (!IsPostBack)
             {
-                //CargarPais();
+                //
             }
 
+            //leyendo datos
+            StreamReader leer = new StreamReader(Server.MapPath("~/txt/Inscripciones2.txt"));
 
-
-
+            //definiendo columnas de separacion de TIPOS DE datos ingresados
+            while (!leer.EndOfStream)
+            {
+                string linea = leer.ReadLine();
+                string[] aux = linea.Split(',');
+                tablaRegistros.Rows.Add(aux);
+            }
+            leer.Close();
+            GridViewDatos.DataSource = tablaRegistros;
+            GridViewDatos.DataBind();
 
         }
 
-        //cargando paises
+        //
         
 
 

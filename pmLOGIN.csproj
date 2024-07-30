@@ -184,7 +184,7 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
-    <Content Include="txt\Inscripciones.txt" />
+    <Content Include="txt\Inscripciones2.txt" />
     <Content Include="txt\PaisesLatinoamericanos.txt" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
