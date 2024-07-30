@@ -129,6 +129,7 @@
     <Content Include="pags\DatosRegistrados.aspx" />
     <Content Include="pags\LogIn.aspx" />
     <Content Include="pags\Registro.aspx" />
+    <Content Include="pags\Perfil.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -187,6 +188,7 @@
     <Content Include="Site.Master" />
     <Content Include="txt\Inscripciones2.txt" />
     <Content Include="txt\PaisesLatinoamericanos.txt" />
+    <Content Include="txt\usuarios.txt" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -239,6 +241,13 @@
     </Compile>
     <Compile Include="pags\Registro.aspx.designer.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pags\Perfil.aspx.cs">
+      <DependentUpon>Perfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pags\Perfil.aspx.designer.cs">
+      <DependentUpon>Perfil.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">

@@ -62,6 +62,7 @@
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/pags/Registro.aspx">Registro</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/pags/DatosRegistrados.aspx">Datos</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/pags/LogIn.aspx">LogIn</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/pags/Perfil.aspx">Perfil</a></li>
                     </ul>
                 </div>
             </div>

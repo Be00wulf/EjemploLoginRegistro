@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="LogIn.aspx.cs" Inherits="pmLOGIN.pags.LogIn" %>
+﻿<%@ Page Title="LogIn" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="LogIn.aspx.cs" Inherits="pmLOGIN.pags.LogIn" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <link href="../css/StyleLOGIN.css" rel="stylesheet" type="text/css" />
@@ -23,19 +23,19 @@
 
         <tr>
             <td>
-                <asp:TextBox ID="TextBoxUsuario" CssClass="estilotxtBox" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TextBoxUsuario" CssClass="estilotxtBox" placeholder="Usuario" runat="server"></asp:TextBox>
             </td>
         </tr>
 
         <tr>
             <td>
-                <asp:TextBox ID="TextBoxContrasenia" CssClass="estilotxtBox" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TextBoxContrasenia" CssClass="estilotxtBox" TextMode="Password" placeholder="Clave" runat="server"></asp:TextBox>
             </td>
         </tr>
 
         <tr>
             <td>
-                <asp:Button ID="ButtonIngresar" class="boton" runat="server" Text="Ingresar" />
+                <asp:Button ID="ButtonIngresar" class="boton" runat="server" Text="Ingresar" OnClick="ButtonIngresar_Click" />
             </td>
         </tr>
     </table>
