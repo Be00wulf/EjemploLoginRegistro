@@ -25,11 +25,125 @@ namespace pmLOGIN.pags
                 CargarPais();
                 CargarGenero();
                 CargarDepartamento();
-                //CargarEstadoCivil();
+            }
+        }
+
+        //MUNICIPIO Y DEPARTAMENTO ENLAZADOS
+        public void CargarMunicipio()
+        {
+            tablaMunicipio.Columns.Clear();
+            tablaMunicipio.Rows.Clear();
+            tablaMunicipio.Columns.Add("CodMunic");
+            tablaMunicipio.Columns.Add("Munic");
+            tablaMunicipio.Columns.Add("CodDepto");
+
+            StreamReader leer2 = new StreamReader(Server.MapPath("~/txt/Municipio.txt"));
+
+            while (!leer2.EndOfStream)
+            {
+                string linea = leer2.ReadLine();
+                string[] aux = linea.Split(',');
+                if (DropDownListDepto.SelectedValue == aux[2])      //ojo  enlazado al condicional
+                {
+                    tablaMunicipio.Rows.Add(aux);
+                }
             }
 
+            leer2.Close();
+            DropDownListMunicipio.DataSource = tablaMunicipio;
+            DropDownListMunicipio.DataTextField = "Munic";
+            DropDownListMunicipio.DataValueField = "CodMunic";
+            DropDownListMunicipio.DataBind();
+        }
+
+        //ctrl K C: comentar         cttrl K U: descomentar
+        public void CargarDepartamento()
+        {
+            tablaDepartamento.Columns.Add("Codigo");
+            tablaDepartamento.Columns.Add("Depto");
             //recordar ~/ al inicio del "" luego del mapPath para ir a la raiz
-            //StreamReader leer = new StreamReader(Server.MapPath("~/txt/PaisesLatinoamericanos.txt"));
+            StreamReader leer = new StreamReader(Server.MapPath("~/txt/Departamento.txt"));
+
+            while (!leer.EndOfStream)
+            {
+                string linea = leer.ReadLine();
+                string[] aux = linea.Split(',');
+                tablaDepartamento.Rows.Add(aux);
+            }
+            leer.Close();
+            DropDownListDepto.DataSource = tablaDepartamento;
+            DropDownListDepto.DataTextField = "Depto";
+            DropDownListDepto.DataValueField = "Codigo";
+            DropDownListDepto.DataBind();
+        }
+
+        //GENERO Y ESTADO CIVIL ENLAZADOS
+        public void CargarEstadoCivil()
+        {
+            tablaEstadoCivil.Columns.Clear();
+            tablaEstadoCivil.Rows.Clear();
+            tablaEstadoCivil.Columns.Add("CodEstadoC");
+            tablaEstadoCivil.Columns.Add("EstadoCivil");
+            tablaEstadoCivil.Columns.Add("CodGenero");
+            StreamReader leer2 = new StreamReader(Server.MapPath("~/txt/EstadoCivilF.txt"));
+
+            while (!leer2.EndOfStream)
+            {
+                string linea = leer2.ReadLine();
+                string[] aux = linea.Split(',');
+                if (DropDownListGenero.SelectedValue == aux[2])
+                {
+                    tablaEstadoCivil.Rows.Add(aux);
+                }
+            }
+
+            leer2.Close();
+            DropDownListEstadoCivil.DataSource = tablaEstadoCivil;
+            DropDownListEstadoCivil.DataTextField = "EstadoCivil";
+            DropDownListEstadoCivil.DataValueField = "CodEstadoC";
+            DropDownListEstadoCivil.DataBind();
+        }
+
+        public void CargarGenero()
+        {
+            tablaGenero.Columns.Add("Codigo");
+            tablaGenero.Columns.Add("Genero");
+            //recordar ~/ al inicio del "" luego del mapPath para ir a la raiz
+            StreamReader leer1 = new StreamReader(Server.MapPath("~/txt/GeneroM.txt"));
+
+            while (!leer1.EndOfStream)
+            {
+                string linea = leer1.ReadLine();
+                string[] aux = linea.Split(',');
+                tablaGenero.Rows.Add(aux);
+            }
+
+            leer1.Close();
+            DropDownListGenero.DataSource = tablaGenero;
+            DropDownListGenero.DataTextField = "Genero";
+            DropDownListGenero.DataValueField = "Codigo";
+            DropDownListGenero.DataBind();
+            tablaEstadoCivil.Clear();
+        }
+
+        public void CargarPais()
+        {
+            tablaPaises.Columns.Add("Codigo");
+            tablaPaises.Columns.Add("Pais");
+            //recordar ~/ al inicio del "" luego del mapPath para ir a la raiz
+            StreamReader leer = new StreamReader(Server.MapPath("~/txt/PaisesLatinoamericanos.txt"));
+
+            while (!leer.EndOfStream)
+            {
+                string linea = leer.ReadLine();
+                string[] aux = linea.Split(',');
+                tablaPaises.Rows.Add(aux);
+            }
+            leer.Close();
+            DropDownListPais.DataSource = tablaPaises;
+            DropDownListPais.DataTextField = "Pais";
+            DropDownListPais.DataValueField = "Codigo";
+            DropDownListPais.DataBind();
         }
 
         protected void DropDownListPais_SelectedIndexChanged(object sender, EventArgs e)
@@ -82,151 +196,23 @@ namespace pmLOGIN.pags
                 escribir.WriteLine(linea);
             }
 
-            //confirmacion
             Response.Write("<script language=javascript>alert('Se ha ingresado el cliente exitosamente')</script>");
-            //limpiar();
         }
 
         protected void DropDownListGenero_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarEstadoCivil();
             TextBoxGenero.Text = DropDownListGenero.SelectedItem.Text;
-            //DropDownListEstadoCivil.Items.Clear();
-            //DropDownListEstadoCivil.Items.Add(new ListItem("Seleccione estado civil", ""));
-
         }
 
         protected void DropDownListEstadoCivil_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //CargarEstadoCivilF();
             TextBoxEstadoCivil.Text = DropDownListEstadoCivil.SelectedItem.Text;
-        }
-
-        //MUNICIPIO Y DEPARTAMENTO ENLAZADOS
-        public void CargarMunicipio()
-        {
-            tablaMunicipio.Columns.Clear();
-            tablaMunicipio.Rows.Clear();
-            tablaMunicipio.Columns.Add("CodMunic");
-            tablaMunicipio.Columns.Add("Munic");
-            tablaMunicipio.Columns.Add("CodDepto");
-
-            StreamReader leer2 = new StreamReader(Server.MapPath("~/txt/Municipio.txt"));
-
-            while (!leer2.EndOfStream)
-            {
-                string linea = leer2.ReadLine();
-                string[] aux = linea.Split(',');
-                if (DropDownListDepto.SelectedValue == aux[2])      //ojo  enlazado al condicional
-                {
-                    tablaMunicipio.Rows.Add(aux);
-                }
-
-                //tablaDepa.Rows.Add(aux);
-            }
-            leer2.Close();
-            DropDownListMunicipio.DataSource = tablaMunicipio;
-            DropDownListMunicipio.DataTextField = "Munic";
-            DropDownListMunicipio.DataValueField = "CodMunic";
-            DropDownListMunicipio.DataBind();
-        }
-
-        //ctrl K C         - cttrl K U
-        public void CargarDepartamento()
-        {
-            tablaDepartamento.Columns.Add("Codigo");
-            tablaDepartamento.Columns.Add("Depto");
-            //recordar ~/ al inicio del "" luego del mapPath para ir a la raiz
-            StreamReader leer = new StreamReader(Server.MapPath("~/txt/Departamento.txt"));
-
-            while (!leer.EndOfStream)
-            {
-                string linea = leer.ReadLine();
-                string[] aux = linea.Split(',');
-                tablaDepartamento.Rows.Add(aux);
-            }
-            leer.Close();
-            DropDownListDepto.DataSource = tablaDepartamento;
-            DropDownListDepto.DataTextField = "Depto";
-            DropDownListDepto.DataValueField = "Codigo";
-            DropDownListDepto.DataBind();
-        }
-
-        //GENERO Y ESTADO CIVIL ENLAZADOS
-        public void CargarEstadoCivil()
-        {
-            tablaEstadoCivil.Columns.Clear();
-            tablaEstadoCivil.Rows.Clear();
-            tablaEstadoCivil.Columns.Add("CodEstadoC");
-            tablaEstadoCivil.Columns.Add("EstadoCivil");
-            tablaEstadoCivil.Columns.Add("CodGenero");
-
-            StreamReader leer2 = new StreamReader(Server.MapPath("~/txt/EstadoCivilF.txt"));
-
-            while (!leer2.EndOfStream)
-            {
-                string linea = leer2.ReadLine();
-                string[] aux = linea.Split(',');
-                if (DropDownListGenero.SelectedValue == aux[2])
-                {
-                    tablaEstadoCivil.Rows.Add(aux);
-                }
-
-                //tablaDepa.Rows.Add(aux);
-            }
-            leer2.Close();
-            DropDownListEstadoCivil.DataSource = tablaEstadoCivil;
-            DropDownListEstadoCivil.DataTextField = "EstadoCivil";
-            DropDownListEstadoCivil.DataValueField = "CodEstadoC";
-            DropDownListEstadoCivil.DataBind();
-        }
-
-        public void CargarGenero()
-        {
-            tablaGenero.Columns.Add("Codigo");
-            tablaGenero.Columns.Add("Genero");
-            //recordar ~/ al inicio del "" luego del mapPath para ir a la raiz
-            StreamReader leer1 = new StreamReader(Server.MapPath("~/txt/GeneroM.txt"));
-
-            while (!leer1.EndOfStream)
-            {
-                string linea = leer1.ReadLine();
-                string[] aux = linea.Split(',');
-                tablaGenero.Rows.Add(aux);
-            }
-            leer1.Close();
-            DropDownListGenero.DataSource = tablaGenero;
-            DropDownListGenero.DataTextField = "Genero";
-            DropDownListGenero.DataValueField = "Codigo";
-            DropDownListGenero.DataBind();
-            tablaEstadoCivil.Clear();
-        }
-
-        public void CargarPais()
-        {
-            tablaPaises.Columns.Add("Codigo");
-            tablaPaises.Columns.Add("Pais");
-            //recordar ~/ al inicio del "" luego del mapPath para ir a la raiz
-            StreamReader leer = new StreamReader(Server.MapPath("~/txt/PaisesLatinoamericanos.txt"));
-
-            while (!leer.EndOfStream)
-            {
-                string linea = leer.ReadLine();
-                string[] aux = linea.Split(',');
-                tablaPaises.Rows.Add(aux);
-            }
-            leer.Close();
-            DropDownListPais.DataSource = tablaPaises;
-            DropDownListPais.DataTextField = "Pais";
-            DropDownListPais.DataValueField = "Codigo";
-            DropDownListPais.DataBind();
         }
 
         protected void DropDownListDepto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //cargar municipio
             CargarMunicipio();
-
             TextBoxDepto.Text = DropDownListDepto.SelectedItem.Text;
         }
 

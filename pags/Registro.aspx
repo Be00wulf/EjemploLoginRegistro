@@ -139,7 +139,8 @@
 
         <tr>
             <td>
-                <asp:TextBox ID="TextBoxEmail" runat="server" CssClass="estilotxtBox" placeholder="Correo electrónico"></asp:TextBox>
+                <%-- ojo type o TextMode --%>
+                <asp:TextBox ID="TextBoxEmail" runat="server" type="email" CssClass="estilotxtBox" placeholder="Correo electrónico"></asp:TextBox>
             </td>
             <td>
                 <asp:TextBox ID="TextBoxEmergName" runat="server" CssClass="estilotxtBox" placeholder="Nombres y apellidos"></asp:TextBox>
