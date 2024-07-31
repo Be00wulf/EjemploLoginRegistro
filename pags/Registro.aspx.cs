@@ -14,7 +14,9 @@ namespace pmLOGIN.pags
         //declarando tablas
         DataTable tablaPaises = new DataTable();
         DataTable tablaGenero = new DataTable();
-        DataTable tablaEstadoCivil = new DataTable();  
+        DataTable tablaEstadoCivil = new DataTable(); 
+        DataTable tablaDepartamento = new DataTable();
+        DataTable tablaMunicipio = new DataTable();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,20 +24,16 @@ namespace pmLOGIN.pags
             {
                 CargarPais();
                 CargarGenero();
+                CargarDepartamento();
                 //CargarEstadoCivil();
             }
 
             //recordar ~/ al inicio del "" luego del mapPath para ir a la raiz
-            StreamReader leer = new StreamReader(Server.MapPath("~/txt/PaisesLatinoamericanos.txt"));
-            StreamReader leer1 = new StreamReader(Server.MapPath("~/txt/Genero.txt"));
-            StreamReader leer2 = new StreamReader(Server.MapPath("~/txt/EstadoCivilF.txt"));
-
+            //StreamReader leer = new StreamReader(Server.MapPath("~/txt/PaisesLatinoamericanos.txt"));
         }
 
         protected void DropDownListPais_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //CargarPais();
-
             //mostrando el texto de la selección en el text box
             TextBoxPais.Text = DropDownListPais.SelectedItem.Text;
         }
@@ -105,53 +103,53 @@ namespace pmLOGIN.pags
         }
 
         //MUNICIPIO Y DEPARTAMENTO ENLAZADOS
-        public void CargarDepartamento()
+        public void CargarMunicipio()
         {
-            //tablaEstadoCivil.Columns.Clear();
-            //tablaEstadoCivil.Rows.Clear();
-            //tablaEstadoCivil.Columns.Add("CodEstadoC");
-            //tablaEstadoCivil.Columns.Add("EstadoCivil");
-            //tablaEstadoCivil.Columns.Add("CodGenero");
+            tablaMunicipio.Columns.Clear();
+            tablaMunicipio.Rows.Clear();
+            tablaMunicipio.Columns.Add("CodMunic");
+            tablaMunicipio.Columns.Add("Munic");
+            tablaMunicipio.Columns.Add("CodDepto");
 
-            //StreamReader leer2 = new StreamReader(Server.MapPath("~/txt/EstadoCivilF.txt"));
+            StreamReader leer2 = new StreamReader(Server.MapPath("~/txt/Municipio.txt"));
 
-            //while (!leer2.EndOfStream)
-            //{
-            //    string linea = leer2.ReadLine();
-            //    string[] aux = linea.Split(',');
-            //    if (DropDownListGenero.SelectedValue == aux[2])
-            //    {
-            //        tablaEstadoCivil.Rows.Add(aux);
-            //    }
+            while (!leer2.EndOfStream)
+            {
+                string linea = leer2.ReadLine();
+                string[] aux = linea.Split(',');
+                if (DropDownListDepto.SelectedValue == aux[2])      //ojo  enlazado al condicional
+                {
+                    tablaMunicipio.Rows.Add(aux);
+                }
 
-            //    //tablaDepa.Rows.Add(aux);
-            //}
-            //leer2.Close();
-            //DropDownListEstadoCivil.DataSource = tablaEstadoCivil;
-            //DropDownListEstadoCivil.DataTextField = "EstadoCivil";
-            //DropDownListEstadoCivil.DataValueField = "CodEstadoC";
-            //DropDownListEstadoCivil.DataBind();
+                //tablaDepa.Rows.Add(aux);
+            }
+            leer2.Close();
+            DropDownListMunicipio.DataSource = tablaMunicipio;
+            DropDownListMunicipio.DataTextField = "Munic";
+            DropDownListMunicipio.DataValueField = "CodMunic";
+            DropDownListMunicipio.DataBind();
         }
 
-        public void CargarmMunicipio()
+        //ctrl K C         - cttrl K U
+        public void CargarDepartamento()
         {
-            //tablaGenero.Columns.Add("Codigo");
-            //tablaGenero.Columns.Add("Genero");
-            ////recordar ~/ al inicio del "" luego del mapPath para ir a la raiz
-            //StreamReader leer1 = new StreamReader(Server.MapPath("~/txt/GeneroM.txt"));
+            tablaDepartamento.Columns.Add("Codigo");
+            tablaDepartamento.Columns.Add("Depto");
+            //recordar ~/ al inicio del "" luego del mapPath para ir a la raiz
+            StreamReader leer = new StreamReader(Server.MapPath("~/txt/Departamento.txt"));
 
-            //while (!leer1.EndOfStream)
-            //{
-            //    string linea = leer1.ReadLine();
-            //    string[] aux = linea.Split(',');
-            //    tablaGenero.Rows.Add(aux);
-            //}
-            //leer1.Close();
-            //DropDownListGenero.DataSource = tablaGenero;
-            //DropDownListGenero.DataTextField = "Genero";
-            //DropDownListGenero.DataValueField = "Codigo";
-            //DropDownListGenero.DataBind();
-            //tablaEstadoCivil.Clear();
+            while (!leer.EndOfStream)
+            {
+                string linea = leer.ReadLine();
+                string[] aux = linea.Split(',');
+                tablaDepartamento.Rows.Add(aux);
+            }
+            leer.Close();
+            DropDownListDepto.DataSource = tablaDepartamento;
+            DropDownListDepto.DataTextField = "Depto";
+            DropDownListDepto.DataValueField = "Codigo";
+            DropDownListDepto.DataBind();
         }
 
         //GENERO Y ESTADO CIVIL ENLAZADOS
@@ -222,6 +220,19 @@ namespace pmLOGIN.pags
             DropDownListPais.DataTextField = "Pais";
             DropDownListPais.DataValueField = "Codigo";
             DropDownListPais.DataBind();
+        }
+
+        protected void DropDownListDepto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //cargar municipio
+            CargarMunicipio();
+
+            TextBoxDepto.Text = DropDownListDepto.SelectedItem.Text;
+        }
+
+        protected void DropDownListMunicipio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TextBoxMunp.Text = DropDownListMunicipio.SelectedItem.Text;
         }
     }
 }

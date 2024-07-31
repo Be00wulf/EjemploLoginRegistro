@@ -77,7 +77,8 @@
                 <asp:TextBox ID="TextBoxCUI" runat="server" CssClass="estilotxtBox" placeholder="Documento de Identificación (CUI)"></asp:TextBox>
             </td>
             <td>
-                <br />
+                <h6 class="textoResaltado"> <strong class="textoSimple">Fecha de nacimiento</strong>
+                </h6>
                 <asp:TextBox ID="TextBoxNacimiento" runat="server" CssClass="estilotxtBox" type="date" placeholder="Fecha de Nacimiento"></asp:TextBox>
             </td>
             <td>
@@ -108,12 +109,19 @@
 
         <tr>
             <td>
-                <asp:TextBox ID="TextBoxDepto" runat="server" CssClass="estilotxtBox" placeholder="Departamento"></asp:TextBox>
+                <asp:DropDownList ID="DropDownListDepto" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownListDepto_SelectedIndexChanged">
+                </asp:DropDownList>
+                <br />
+                <asp:TextBox ID="TextBoxDepto" runat="server" CssClass="estilotxtBox" placeholder="Departamento" Enabled="False"></asp:TextBox>
             </td>
             <td>
-                <asp:TextBox ID="TextBoxMunp" runat="server" CssClass="estilotxtBox" placeholder="Municipio"></asp:TextBox>
+                <asp:DropDownList ID="DropDownListMunicipio" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownListMunicipio_SelectedIndexChanged">
+                </asp:DropDownList>
+                <br />
+                <asp:TextBox ID="TextBoxMunp" runat="server" CssClass="estilotxtBox" placeholder="Municipio" Enabled="False"></asp:TextBox>
             </td>
             <td>
+                <br />
                 <asp:TextBox ID="TextBoxTel" runat="server" CssClass="estilotxtBox" placeholder="Teléfono Celular"></asp:TextBox>
             </td>
         </tr>
@@ -154,24 +162,37 @@
 
         <tr>
             <td>
-                <asp:TextBox ID="TextBoxSede" runat="server" CssClass="estilotxtBox" placeholder="Sede"></asp:TextBox>
+                <asp:DropDownList ID="DropDownListSede" runat="server" AutoPostBack="True">
+                </asp:DropDownList>
+                <br />
+                <asp:TextBox ID="TextBoxSede" runat="server" CssClass="estilotxtBox" placeholder="Sede" Enabled="False"></asp:TextBox>
             </td>
             <td>
-                <asp:TextBox ID="TextBoxCarrera" runat="server" CssClass="estilotxtBox" placeholder="Carrera a la que aplica"></asp:TextBox>
+                <asp:DropDownList ID="DropDownListCarrera" runat="server" AutoPostBack="True">
+                </asp:DropDownList>
+                <br />
+                <asp:TextBox ID="TextBoxCarrera" runat="server" CssClass="estilotxtBox" placeholder="Carrera a la que aplica" Enabled="False"></asp:TextBox>
             </td>
             <td>
-                <asp:TextBox ID="TextBoxP" runat="server" CssClass="estilotxtBox" placeholder="Plan de estudio"></asp:TextBox>
+                <asp:DropDownList ID="DropDownListPlan" runat="server" AutoPostBack="True">
+                </asp:DropDownList>
+                <br />
+                <asp:TextBox ID="TextBoxP" runat="server" CssClass="estilotxtBox" placeholder="Plan de estudio" Enabled="False"></asp:TextBox>
             </td>
         </tr>
 
         <tr>
             <td>
+                <br />
                 <asp:TextBox ID="TextBoxTitulo" runat="server" CssClass="estilotxtBox" placeholder="Título"></asp:TextBox>
             </td>
             <td>
-                <asp:TextBox ID="TextBoxTituloFecha" runat="server" CssClass="estilotxtBox" placeholder="Fecha del Título"></asp:TextBox>
+                <asp:Label ID="Label2" runat="server" Text="Fecha del título"></asp:Label>
+                <br />
+                <asp:TextBox ID="TextBoxTituloFecha" runat="server" type="date" CssClass="estilotxtBox" placeholder="Fecha del Título"></asp:TextBox>
             </td>
             <td>
+                <br />
                 <asp:TextBox ID="TextBoxInstitucion" runat="server" CssClass="estilotxtBox" placeholder="Nombre de la Institución"></asp:TextBox>
             </td>
         </tr>
