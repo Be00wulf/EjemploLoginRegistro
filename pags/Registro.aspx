@@ -63,7 +63,7 @@
                 <asp:TextBox ID="TextBoxLn1" runat="server" CssClass="estilotxtBox" placeholder="Primer apellido"> </asp:TextBox>
             </td>
             <td>
-                <asp:TextBox ID="TextBoxLn2s" runat="server" CssClass="estilotxtBox" placeholder="Segundpo apellido"> </asp:TextBox>
+                <asp:TextBox ID="TextBoxLn2s" runat="server" CssClass="estilotxtBox" placeholder="Segundo apellido"> </asp:TextBox>
             </td>
             <td>
                 <asp:TextBox ID="TextBoxLnN" runat="server" CssClass="estilotxtBox" placeholder="Apellido de casada"> </asp:TextBox>
@@ -73,25 +73,35 @@
         <%-- Datos --%>
         <tr>
             <td>
+                <br />
                 <asp:TextBox ID="TextBoxCUI" runat="server" CssClass="estilotxtBox" placeholder="Documento de Identificación (CUI)"></asp:TextBox>
             </td>
             <td>
-                <asp:TextBox ID="TextBoxNacimiento" runat="server" CssClass="estilotxtBox" placeholder="Fecha de Nacimiento"></asp:TextBox>
+                <br />
+                <asp:TextBox ID="TextBoxNacimiento" runat="server" CssClass="estilotxtBox" type="date" placeholder="Fecha de Nacimiento"></asp:TextBox>
             </td>
             <td>
                 <asp:DropDownList ID="DropDownListPais" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownListPais_SelectedIndexChanged"></asp:DropDownList>
+                <br />
                 <asp:TextBox ID="TextBoxPais" runat="server" CssClass="estilotxtBox" enabled="false" placeholder="País de Nacimiento"></asp:TextBox>
             </td>
         </tr>
 
         <tr>
             <td>
-                <asp:TextBox ID="TextBoxGenero" runat="server" CssClass="estilotxtBox" placeholder="Género"></asp:TextBox>
+                <asp:DropDownList ID="DropDownListGenero" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownListGenero_SelectedIndexChanged">
+                </asp:DropDownList>
+                <br />
+                <asp:TextBox ID="TextBoxGenero" runat="server" CssClass="estilotxtBox" placeholder="Género" Enabled="False"></asp:TextBox>
             </td>
             <td>
-                <asp:TextBox ID="TextBoxEstadoCivil" runat="server" CssClass="estilotxtBox" placeholder="Estado Civil"></asp:TextBox>
+                <asp:DropDownList ID="DropDownListEstadoCivil" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownListEstadoCivil_SelectedIndexChanged">
+                </asp:DropDownList>
+                <br />
+                <asp:TextBox ID="TextBoxEstadoCivil" runat="server" CssClass="estilotxtBox" placeholder="Estado Civil" Enabled="False"></asp:TextBox>
             </td>
             <td>
+                <br />
                 <asp:TextBox ID="TextBoxDireccion" runat="server" CssClass="estilotxtBox" placeholder="Dirección de residencaia"></asp:TextBox>
             </td>
         </tr>

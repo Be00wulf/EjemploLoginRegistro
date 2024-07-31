@@ -18,8 +18,18 @@ namespace pmLOGIN.pags
             }
             else
             {
-                Response.Redirect("LogIn.aspx");
+                //nos redirige a crear una cuenta si no tiene perfil
+                Response.Redirect("NuevoUsuario.aspx");
             }
+        }
+
+        protected void ButtonCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+
+            // Redirigir al login o página principal
+            Response.Redirect("Login.aspx");
         }
     }
 }

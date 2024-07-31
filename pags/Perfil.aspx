@@ -13,5 +13,11 @@
                 </h1>
              </td>
          </tr>
+
+         <tr>
+             <td>
+                 <asp:Button ID="ButtonCerrarSesion" class="boton" runat="server" Text="Cerrar sesión" OnClick="ButtonCerrarSesion_Click" />
+             </td>
+         </tr>
      </table>
 </asp:Content>

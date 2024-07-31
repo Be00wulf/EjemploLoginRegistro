@@ -13,17 +13,22 @@ namespace pmLOGIN.pags
     {
         //declarando tablas
         DataTable tablaPaises = new DataTable();
+        DataTable tablaGenero = new DataTable();
+        DataTable tablaEstadoCivil = new DataTable();  
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 CargarPais();
+                CargarGenero();
+                //CargarEstadoCivil();
             }
 
             //recordar ~/ al inicio del "" luego del mapPath para ir a la raiz
             StreamReader leer = new StreamReader(Server.MapPath("~/txt/PaisesLatinoamericanos.txt"));
-
+            StreamReader leer1 = new StreamReader(Server.MapPath("~/txt/Genero.txt"));
+            StreamReader leer2 = new StreamReader(Server.MapPath("~/txt/EstadoCivilF.txt"));
 
         }
 
@@ -33,6 +38,170 @@ namespace pmLOGIN.pags
 
             //mostrando el texto de la selección en el text box
             TextBoxPais.Text = DropDownListPais.SelectedItem.Text;
+        }
+
+        protected void ButtonGenerarForm_Click(object sender, EventArgs e)
+        {
+            string nombre1 = TextBoxName1.Text;
+            string nombre2 = TextBoxName2.Text;
+            string nombreN = TextBoxNameN.Text;
+
+            string apellido1 = TextBoxLn1.Text;
+            string apellido2 = TextBoxLn2s.Text;
+            string apellidoN = TextBoxLnN.Text;
+
+            string cui = TextBoxCUI.Text;
+            string nacimiento = TextBoxNacimiento.Text;
+            string pais = TextBoxPais.Text;
+
+            string genero = TextBoxGenero.Text;
+            string estadoCivil = TextBoxEstadoCivil.Text;
+            string residencia = TextBoxDireccion.Text;
+
+            string departamento = TextBoxDepto.Text;
+            string municipio = TextBoxMunp.Text;
+            string tel = TextBoxTel.Text;
+
+            string mail = TextBoxEmail.Text;
+            string emergName = TextBoxEmergName.Text;
+            string emergTel = TextBoxEmergTel.Text;
+
+            string sesde = TextBoxSede.Text;
+            string carrera = TextBoxCarrera.Text;
+            string plan = TextBoxP.Text;
+
+            string titulo = TextBoxTitulo.Text;
+            string tituloFecha = TextBoxTituloFecha.Text;
+            string institucion = TextBoxInstitucion.Text;
+
+            //agregando la linea con los nuevos datos
+            string linea = $"{nombre1},{nombre2},{nombreN},{apellido1},{apellido2},{apellidoN},{cui},{nacimiento},{pais}";
+
+            // Guardar en el archivo de texto
+            string path = Server.MapPath("~/txt/Inscripciones2.txt");
+            using (StreamWriter escribir = new StreamWriter(path, true))
+            {
+                escribir.WriteLine(linea);
+            }
+
+            //confirmacion
+            Response.Write("<script language=javascript>alert('Se ha ingresado el cliente exitosamente')</script>");
+            //limpiar();
+        }
+
+        protected void DropDownListGenero_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarEstadoCivil();
+            TextBoxGenero.Text = DropDownListGenero.SelectedItem.Text;
+            //DropDownListEstadoCivil.Items.Clear();
+            //DropDownListEstadoCivil.Items.Add(new ListItem("Seleccione estado civil", ""));
+
+        }
+
+        protected void DropDownListEstadoCivil_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //CargarEstadoCivilF();
+            TextBoxEstadoCivil.Text = DropDownListEstadoCivil.SelectedItem.Text;
+        }
+
+        //MUNICIPIO Y DEPARTAMENTO ENLAZADOS
+        public void CargarDepartamento()
+        {
+            //tablaEstadoCivil.Columns.Clear();
+            //tablaEstadoCivil.Rows.Clear();
+            //tablaEstadoCivil.Columns.Add("CodEstadoC");
+            //tablaEstadoCivil.Columns.Add("EstadoCivil");
+            //tablaEstadoCivil.Columns.Add("CodGenero");
+
+            //StreamReader leer2 = new StreamReader(Server.MapPath("~/txt/EstadoCivilF.txt"));
+
+            //while (!leer2.EndOfStream)
+            //{
+            //    string linea = leer2.ReadLine();
+            //    string[] aux = linea.Split(',');
+            //    if (DropDownListGenero.SelectedValue == aux[2])
+            //    {
+            //        tablaEstadoCivil.Rows.Add(aux);
+            //    }
+
+            //    //tablaDepa.Rows.Add(aux);
+            //}
+            //leer2.Close();
+            //DropDownListEstadoCivil.DataSource = tablaEstadoCivil;
+            //DropDownListEstadoCivil.DataTextField = "EstadoCivil";
+            //DropDownListEstadoCivil.DataValueField = "CodEstadoC";
+            //DropDownListEstadoCivil.DataBind();
+        }
+
+        public void CargarmMunicipio()
+        {
+            //tablaGenero.Columns.Add("Codigo");
+            //tablaGenero.Columns.Add("Genero");
+            ////recordar ~/ al inicio del "" luego del mapPath para ir a la raiz
+            //StreamReader leer1 = new StreamReader(Server.MapPath("~/txt/GeneroM.txt"));
+
+            //while (!leer1.EndOfStream)
+            //{
+            //    string linea = leer1.ReadLine();
+            //    string[] aux = linea.Split(',');
+            //    tablaGenero.Rows.Add(aux);
+            //}
+            //leer1.Close();
+            //DropDownListGenero.DataSource = tablaGenero;
+            //DropDownListGenero.DataTextField = "Genero";
+            //DropDownListGenero.DataValueField = "Codigo";
+            //DropDownListGenero.DataBind();
+            //tablaEstadoCivil.Clear();
+        }
+
+        //GENERO Y ESTADO CIVIL ENLAZADOS
+        public void CargarEstadoCivil()
+        {
+            tablaEstadoCivil.Columns.Clear();
+            tablaEstadoCivil.Rows.Clear();
+            tablaEstadoCivil.Columns.Add("CodEstadoC");
+            tablaEstadoCivil.Columns.Add("EstadoCivil");
+            tablaEstadoCivil.Columns.Add("CodGenero");
+
+            StreamReader leer2 = new StreamReader(Server.MapPath("~/txt/EstadoCivilF.txt"));
+
+            while (!leer2.EndOfStream)
+            {
+                string linea = leer2.ReadLine();
+                string[] aux = linea.Split(',');
+                if (DropDownListGenero.SelectedValue == aux[2])
+                {
+                    tablaEstadoCivil.Rows.Add(aux);
+                }
+
+                //tablaDepa.Rows.Add(aux);
+            }
+            leer2.Close();
+            DropDownListEstadoCivil.DataSource = tablaEstadoCivil;
+            DropDownListEstadoCivil.DataTextField = "EstadoCivil";
+            DropDownListEstadoCivil.DataValueField = "CodEstadoC";
+            DropDownListEstadoCivil.DataBind();
+        }
+
+        public void CargarGenero()
+        {
+            tablaGenero.Columns.Add("Codigo");
+            tablaGenero.Columns.Add("Genero");
+            //recordar ~/ al inicio del "" luego del mapPath para ir a la raiz
+            StreamReader leer1 = new StreamReader(Server.MapPath("~/txt/GeneroM.txt"));
+
+            while (!leer1.EndOfStream)
+            {
+                string linea = leer1.ReadLine();
+                string[] aux = linea.Split(',');
+                tablaGenero.Rows.Add(aux);
+            }
+            leer1.Close();
+            DropDownListGenero.DataSource = tablaGenero;
+            DropDownListGenero.DataTextField = "Genero";
+            DropDownListGenero.DataValueField = "Codigo";
+            DropDownListGenero.DataBind();
+            tablaEstadoCivil.Clear();
         }
 
         public void CargarPais()
@@ -53,35 +222,6 @@ namespace pmLOGIN.pags
             DropDownListPais.DataTextField = "Pais";
             DropDownListPais.DataValueField = "Codigo";
             DropDownListPais.DataBind();
-        }
-
-        protected void ButtonGenerarForm_Click(object sender, EventArgs e)
-        {
-            string nombre1 = TextBoxName1.Text;
-            string nombre2 = TextBoxName2.Text;
-            string nombreN = TextBoxNameN.Text;
-
-            string apellido1 = TextBoxLn1.Text;
-            string apellido2 = TextBoxLn2s.Text;
-            string apellidoN = TextBoxLnN.Text;
-
-            string cui = TextBoxCUI.Text;
-            string nacimiento = TextBoxNacimiento.Text;
-            string pais = TextBoxPais.Text;
-
-            //agregando la linea con los nuevos datos
-            string linea = $"{nombre1},{nombre2},{nombreN},{apellido1},{apellido2},{apellidoN},{cui},{nacimiento},{pais}";
-
-            // Guardar en el archivo de texto
-            string path = Server.MapPath("~/txt/Inscripciones2.txt");
-            using (StreamWriter escribir = new StreamWriter(path, true))
-            {
-                escribir.WriteLine(linea);
-            }
-
-            //confirmacion
-            Response.Write("<script language=javascript>alert('Se ha ingresado el cliente exitosamente')</script>");
-            //limpiar();
         }
     }
 }
