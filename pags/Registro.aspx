@@ -74,7 +74,7 @@
         <tr>
             <td>
                 <br />
-                <asp:TextBox ID="TextBoxCUI" runat="server" CssClass="estilotxtBox" placeholder="Documento de Identificación (CUI)"></asp:TextBox>
+                <asp:TextBox ID="TextBoxCUI" runat="server" type="number" CssClass="estilotxtBox" placeholder="Documento de Identificación (CUI)"></asp:TextBox>
             </td>
             <td>
                 <h6 class="textoResaltado"> <strong class="textoSimple">Fecha de nacimiento</strong></h6>
@@ -121,7 +121,7 @@
             </td>
             <td>
                 <br />
-                <asp:TextBox ID="TextBoxTel" runat="server" CssClass="estilotxtBox" placeholder="Teléfono Celular"></asp:TextBox>
+                <asp:TextBox ID="TextBoxTel" type="number" runat="server" CssClass="estilotxtBox" placeholder="Teléfono Celular"></asp:TextBox>
             </td>
         </tr>
     </table>
@@ -145,7 +145,7 @@
                 <asp:TextBox ID="TextBoxEmergName" runat="server" CssClass="estilotxtBox" placeholder="Nombres y apellidos"></asp:TextBox>
             </td>
             <td>
-                <asp:TextBox ID="TextBoxEmergTel" runat="server" CssClass="estilotxtBox" placeholder="Teléfono de emergencia"></asp:TextBox>
+                <asp:TextBox ID="TextBoxEmergTel" runat="server" type="number" CssClass="estilotxtBox" placeholder="Teléfono de emergencia"></asp:TextBox>
             </td>
         </tr>
     </table>

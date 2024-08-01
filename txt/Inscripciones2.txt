@@ -1,3 +1,4 @@
 ﻿Mariana,Lucia,Dominga,Casas,Rosas,Lucero,123,11/11/1990,Guatemala
 prueba6,bb,cc,dd,ee,ff,567,2005-12-14,Bolivia,Masculino,Casado,qq,Suchitepéquez,Samayac,99,qqqqqs@wwe.com,as,sa,Retalhuleu,TécnicoenPresupuestos,Matutina,ww,2024-12-15,tyty
 prueba3,bb,cc,dd,ee,ff,123,2000-02-14,Colombia,Femenino,Soltera,qq,San Marcos,San Cristóbal Cucho,22,as@wwe.com,as,sa,Huehuetenango,IngenieríaenElectrónicaInformáticayCienciasdelaComputación,Vespertina,ww,2003-12-05,88ie
+FDG,GF,DFG,DFG,DFG,DFG,345345,2006-05-12,CostaRica,Masculino,Soltero,TFDYHETH,Jalapa,San Carlos Alzatate,567657,dsf@sdf.com,fsdgdfg,56456,SanPedroSacatepéquez SanMarcos,LicenciaturaenArquitectura,Matutina,fsgfhh,1520-04-13,dgfghd
