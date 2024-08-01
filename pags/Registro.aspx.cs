@@ -35,29 +35,30 @@ namespace pmLOGIN.pags
         //SEDE - CARRERA Y PLAN, ENLAZADOS
         public void CargarPlan()
         {
-            //tablaMunicipio.Columns.Clear();
-            //tablaMunicipio.Rows.Clear();
-            //tablaMunicipio.Columns.Add("CodMunic");
-            //tablaMunicipio.Columns.Add("Munic");
-            //tablaMunicipio.Columns.Add("CodDepto");
+            //..el primer valor de carrera esta ligado al terceer valor del plan
+            tablaPlan.Columns.Clear();
+            tablaPlan.Rows.Clear();
+            tablaPlan.Columns.Add("CodPlan");
+            tablaPlan.Columns.Add("Plan");
+            tablaPlan.Columns.Add("CodCarrera");
 
-            //StreamReader leer2 = new StreamReader(Server.MapPath("~/txt/Municipio.txt"));
+            StreamReader leer2 = new StreamReader(Server.MapPath("~/txt/Plan.txt"));
 
-            //while (!leer2.EndOfStream)
-            //{
-            //    string linea = leer2.ReadLine();
-            //    string[] aux = linea.Split(',');
-            //    if (DropDownListDepto.SelectedValue == aux[2])      //ojo  enlazado al condicional
-            //    {
-            //        tablaMunicipio.Rows.Add(aux);
-            //    }
-            //}
+            while (!leer2.EndOfStream)
+            {
+                string linea = leer2.ReadLine();
+                string[] aux = linea.Split(',');
+                if (DropDownListCarrera.SelectedValue == aux[2])      //ojo  enlazado al condicional
+                {
+                    tablaPlan.Rows.Add(aux);
+                }
+            }
 
-            //leer2.Close();
-            //DropDownListMunicipio.DataSource = tablaMunicipio;
-            //DropDownListMunicipio.DataTextField = "Munic";
-            //DropDownListMunicipio.DataValueField = "CodMunic";
-            //DropDownListMunicipio.DataBind();
+            leer2.Close();
+            DropDownListPlan.DataSource = tablaPlan;
+            DropDownListPlan.DataTextField = "Plan";
+            DropDownListPlan.DataValueField = "CodPlan";
+            DropDownListPlan.DataBind();
         }
 
         public void CargarCarrera()
@@ -308,7 +309,13 @@ namespace pmLOGIN.pags
 
         protected void DropDownListCarrera_SelectedIndexChanged(object sender, EventArgs e)
         {
+            CargarPlan();
             TextBoxCarrera.Text = DropDownListCarrera.SelectedItem.Text;
+        }
+
+        protected void DropDownListPlan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TextBoxP.Text = DropDownListPlan.SelectedItem.Text;
         }
     }
 }
