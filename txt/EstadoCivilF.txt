@@ -1,4 +1,5 @@
-﻿1,Soltera,1
+﻿0,Seleccionar,0
+1,Soltera,1
 2,Casada,1
 3,Soltero,2
 4,Casado,2

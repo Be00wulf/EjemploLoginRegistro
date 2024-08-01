@@ -30,6 +30,7 @@ namespace pmLOGIN.pags
                 CargarDepartamento();
                 CargarSede();
                 //DropDownListPais.Items.Clear();
+
             }
             //DropDownListPais.Items.Clear();
         }
@@ -231,6 +232,7 @@ namespace pmLOGIN.pags
         protected void DropDownListPais_SelectedIndexChanged(object sender, EventArgs e)
         {
             //mostrando el texto de la selección en el text box
+            TextBoxPais.Text = DropDownListPais.Items[0].Text;
             TextBoxPais.Text = DropDownListPais.SelectedItem.Text;
         }
 
@@ -336,50 +338,18 @@ namespace pmLOGIN.pags
                 Response.Write("<script language=javascript>alert('Algunos campos están vacíos')</script>");
             }
 
-            ////agregando la linea con los nuevos datos
-            //string linea = $"{nombre1}," +
-            //    $"{nombre2}," +
-            //    $"{nombreN}," +
-            //    $"{apellido1}," +
-            //    $"{apellido2}," +
-            //    $"{apellidoN}," +
-            //    $"{cui}," +
-            //    $"{nacimiento}," +
-            //    $"{pais}," +
-            //    $"{genero}," +
-            //    $"{estadoCivil}," +
-            //    $"{residencia}," +
-            //    $"{departamento}," +
-            //    $"{municipio}," +
-            //    $"{tel}," +
-            //    $"{mail}," +
-            //    $"{emergName}," +
-            //    $"{emergTel}," +
-            //    $"{sesde}," +
-            //    $"{carrera}," +
-            //    $"{plan}," +
-            //    $"{titulo}," +
-            //    $"{tituloFecha}," +
-            //    $"{institucion}";
-
-            //// Guardar en el archivo de texto
-            //string path = Server.MapPath("~/txt/Inscripciones2.txt");
-            //using (StreamWriter escribir = new StreamWriter(path, true))
-            //{
-            //    escribir.WriteLine(linea);
-            //}
-
-            //Response.Write("<script language=javascript>alert('Se ha ingresado el cliente exitosamente')</script>");
         }
 
         protected void DropDownListGenero_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarEstadoCivil();
+            TextBoxEstadoCivil.Text = DropDownListEstadoCivil.Items[0].Text;
             TextBoxGenero.Text = DropDownListGenero.SelectedItem.Text;
         }
 
         protected void DropDownListEstadoCivil_SelectedIndexChanged(object sender, EventArgs e)
         {
+            TextBoxEstadoCivil.Text = DropDownListEstadoCivil.Items[0].Text;
             TextBoxEstadoCivil.Text = DropDownListEstadoCivil.SelectedItem.Text;
         }
 
@@ -404,6 +374,12 @@ namespace pmLOGIN.pags
         {
             CargarPlan();
             TextBoxCarrera.Text = DropDownListCarrera.SelectedItem.Text;
+
+            if (DropDownListPlan.Items.Count == 1)
+            {
+                // Establece el texto del TextBox con el primer elemento del DropDownList
+                TextBoxP.Text = DropDownListPlan.Items[0].Text;
+            }
         }
 
         protected void DropDownListPlan_SelectedIndexChanged(object sender, EventArgs e)

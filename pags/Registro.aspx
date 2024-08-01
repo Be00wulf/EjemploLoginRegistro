@@ -177,7 +177,7 @@
                 <asp:DropDownList ID="DropDownListPlan" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownListPlan_SelectedIndexChanged">
                 </asp:DropDownList>
                 <br />
-                <asp:TextBox ID="TextBoxP" runat="server" CssClass="estilotxtBox" placeholder="Plan de estudio"></asp:TextBox>
+                <asp:TextBox ID="TextBoxP" runat="server" CssClass="estilotxtBox" placeholder="Plan de estudio" Enabled="False"></asp:TextBox>
             </td>
         </tr>
 
