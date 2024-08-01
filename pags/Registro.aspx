@@ -77,8 +77,7 @@
                 <asp:TextBox ID="TextBoxCUI" runat="server" CssClass="estilotxtBox" placeholder="Documento de Identificación (CUI)"></asp:TextBox>
             </td>
             <td>
-                <h6 class="textoResaltado"> <strong class="textoSimple">Fecha de nacimiento</strong>
-                </h6>
+                <h6 class="textoResaltado"> <strong class="textoSimple">Fecha de nacimiento</strong></h6>
                 <asp:TextBox ID="TextBoxNacimiento" runat="server" CssClass="estilotxtBox" type="date" placeholder="Fecha de Nacimiento"></asp:TextBox>
             </td>
             <td>
@@ -163,13 +162,13 @@
 
         <tr>
             <td>
-                <asp:DropDownList ID="DropDownListSede" runat="server" AutoPostBack="True">
+                <asp:DropDownList ID="DropDownListSede" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownListSede_SelectedIndexChanged">
                 </asp:DropDownList>
                 <br />
                 <asp:TextBox ID="TextBoxSede" runat="server" CssClass="estilotxtBox" placeholder="Sede" Enabled="False"></asp:TextBox>
             </td>
             <td>
-                <asp:DropDownList ID="DropDownListCarrera" runat="server" AutoPostBack="True">
+                <asp:DropDownList ID="DropDownListCarrera" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownListCarrera_SelectedIndexChanged">
                 </asp:DropDownList>
                 <br />
                 <asp:TextBox ID="TextBoxCarrera" runat="server" CssClass="estilotxtBox" placeholder="Carrera a la que aplica" Enabled="False"></asp:TextBox>
@@ -188,8 +187,7 @@
                 <asp:TextBox ID="TextBoxTitulo" runat="server" CssClass="estilotxtBox" placeholder="Título"></asp:TextBox>
             </td>
             <td>
-                <asp:Label ID="Label2" runat="server" Text="Fecha del título"></asp:Label>
-                <br />
+                <h6 class="textoResaltado"> <strong class="textoSimple">Fecha del título</strong></h6>
                 <asp:TextBox ID="TextBoxTituloFecha" runat="server" type="date" CssClass="estilotxtBox" placeholder="Fecha del Título"></asp:TextBox>
             </td>
             <td>

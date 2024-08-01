@@ -17,6 +17,9 @@ namespace pmLOGIN.pags
         DataTable tablaEstadoCivil = new DataTable(); 
         DataTable tablaDepartamento = new DataTable();
         DataTable tablaMunicipio = new DataTable();
+        DataTable tablaSede = new DataTable();
+        DataTable tablaCarrera = new DataTable();
+        DataTable tablaPlan = new DataTable(); 
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,7 +28,83 @@ namespace pmLOGIN.pags
                 CargarPais();
                 CargarGenero();
                 CargarDepartamento();
+                CargarSede();
             }
+        }
+
+        //SEDE - CARRERA Y PLAN, ENLAZADOS
+        public void CargarPlan()
+        {
+            //tablaMunicipio.Columns.Clear();
+            //tablaMunicipio.Rows.Clear();
+            //tablaMunicipio.Columns.Add("CodMunic");
+            //tablaMunicipio.Columns.Add("Munic");
+            //tablaMunicipio.Columns.Add("CodDepto");
+
+            //StreamReader leer2 = new StreamReader(Server.MapPath("~/txt/Municipio.txt"));
+
+            //while (!leer2.EndOfStream)
+            //{
+            //    string linea = leer2.ReadLine();
+            //    string[] aux = linea.Split(',');
+            //    if (DropDownListDepto.SelectedValue == aux[2])      //ojo  enlazado al condicional
+            //    {
+            //        tablaMunicipio.Rows.Add(aux);
+            //    }
+            //}
+
+            //leer2.Close();
+            //DropDownListMunicipio.DataSource = tablaMunicipio;
+            //DropDownListMunicipio.DataTextField = "Munic";
+            //DropDownListMunicipio.DataValueField = "CodMunic";
+            //DropDownListMunicipio.DataBind();
+        }
+
+        public void CargarCarrera()
+        {
+            tablaCarrera.Columns.Clear();
+            tablaCarrera.Rows.Clear();
+            tablaCarrera.Columns.Add("CodCarrera");
+            tablaCarrera.Columns.Add("Carrera");
+            tablaCarrera.Columns.Add("CodSede");
+
+            StreamReader leer2 = new StreamReader(Server.MapPath("~/txt/Carrera.txt"));
+
+            while (!leer2.EndOfStream)
+            {
+                string linea = leer2.ReadLine();
+                string[] aux = linea.Split(',');
+                if (DropDownListSede.SelectedValue == aux[2])      //ojo  enlazado al condicional
+                {
+                    tablaCarrera.Rows.Add(aux);
+                }
+            }
+
+            leer2.Close();
+            DropDownListCarrera.DataSource = tablaCarrera;
+            DropDownListCarrera.DataTextField = "Carrera";
+            DropDownListCarrera.DataValueField = "CodCarrera";
+            DropDownListCarrera.DataBind();
+        }
+
+        public void CargarSede()
+        {
+            tablaSede.Columns.Add("Codigo");
+            tablaSede.Columns.Add("Sede");
+            StreamReader leer = new StreamReader(Server.MapPath("~/txt/Sede1.txt"));
+
+            while (!leer.EndOfStream)
+            {
+                string linea = leer.ReadLine();
+                string[] aux = linea.Split(',');
+                tablaSede.Rows.Add(aux);
+            }
+
+            leer.Close();
+            DropDownListSede.DataSource = tablaSede;
+            DropDownListSede.DataTextField = "Sede";
+            DropDownListSede.DataValueField = "Codigo";
+            DropDownListSede.DataBind();
         }
 
         //MUNICIPIO Y DEPARTAMENTO ENLAZADOS
@@ -61,7 +140,6 @@ namespace pmLOGIN.pags
         {
             tablaDepartamento.Columns.Add("Codigo");
             tablaDepartamento.Columns.Add("Depto");
-            //recordar ~/ al inicio del "" luego del mapPath para ir a la raiz
             StreamReader leer = new StreamReader(Server.MapPath("~/txt/Departamento.txt"));
 
             while (!leer.EndOfStream)
@@ -70,6 +148,7 @@ namespace pmLOGIN.pags
                 string[] aux = linea.Split(',');
                 tablaDepartamento.Rows.Add(aux);
             }
+
             leer.Close();
             DropDownListDepto.DataSource = tablaDepartamento;
             DropDownListDepto.DataTextField = "Depto";
@@ -108,7 +187,6 @@ namespace pmLOGIN.pags
         {
             tablaGenero.Columns.Add("Codigo");
             tablaGenero.Columns.Add("Genero");
-            //recordar ~/ al inicio del "" luego del mapPath para ir a la raiz
             StreamReader leer1 = new StreamReader(Server.MapPath("~/txt/GeneroM.txt"));
 
             while (!leer1.EndOfStream)
@@ -139,6 +217,7 @@ namespace pmLOGIN.pags
                 string[] aux = linea.Split(',');
                 tablaPaises.Rows.Add(aux);
             }
+
             leer.Close();
             DropDownListPais.DataSource = tablaPaises;
             DropDownListPais.DataTextField = "Pais";
@@ -219,6 +298,17 @@ namespace pmLOGIN.pags
         protected void DropDownListMunicipio_SelectedIndexChanged(object sender, EventArgs e)
         {
             TextBoxMunp.Text = DropDownListMunicipio.SelectedItem.Text;
+        }
+
+        protected void DropDownListSede_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarCarrera();
+            TextBoxSede.Text = DropDownListSede.SelectedItem.Text;
+        }
+
+        protected void DropDownListCarrera_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TextBoxCarrera.Text = DropDownListCarrera.SelectedItem.Text;
         }
     }
 }

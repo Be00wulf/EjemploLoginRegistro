@@ -1,0 +1,14 @@
+﻿1,Central Quetzaltenango
+2,Retalhuleu
+3,Antonio Beristain
+4,Montesquieu
+5,Escuintla
+6,Huehuetenango
+7,UdeOnline
+8,Escuela Privada de Terapia Física y Ocupacional
+9,San Pedro Sacatepéquez, San Marcos
+10,Escuela de Gobierno
+11,Zacapa
+12,Santo Tomás La Unión
+13,Coatepeque
+14,Mixco

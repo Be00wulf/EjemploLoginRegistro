@@ -1,0 +1,38 @@
+﻿1,Vespertina,1
+2,Matutina,2
+3,Vespertina,2
+4,Matutina,3
+5,Vespertina,3
+6,Matutina,4
+7,Vespertina,5
+8,FinDeSemana,5
+9,Matutina,6
+10,Vespertina,6
+11,FinDeSemana,6
+12,Vespertina,7
+
+
+1,Matutino,1
+2,Vespertino,1
+3,FinDeSemana,1
+
+4,Matutino,2
+5,FinDeSemana,2
+
+6,Vespertino,3
+7,FinDeSemana,3
+
+8,Matutino,4
+9,Vespertino,4
+
+10,Matutino,5
+
+11,Vespertino,6
+
+12,FinDeSemana,7
+
+
+
+matutino finde
+vespertino finde
+matutino vespertino
