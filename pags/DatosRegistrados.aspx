@@ -14,7 +14,16 @@
 
      <tr>
          <td>
-             <asp:GridView ID="GridViewDatos" runat="server">
+             <asp:GridView ID="GridViewDatos" runat="server" BackColor="red" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
+                 <FooterStyle BackColor="red" />
+                 <HeaderStyle BackColor="red" Font-Bold="True" ForeColor="black" />
+                 <PagerStyle BackColor="#CCCCCC" ForeColor="red" HorizontalAlign="Left" />
+                 <RowStyle BackColor="White" />
+                 <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="red" />
+                 <SortedAscendingCellStyle BackColor="red" />
+                 <SortedAscendingHeaderStyle BackColor="red" />
+                 <SortedDescendingCellStyle BackColor="red" />
+                 <SortedDescendingHeaderStyle BackColor="red" />
              </asp:GridView>
          </td>
      </tr>

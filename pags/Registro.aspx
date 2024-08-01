@@ -81,7 +81,7 @@
                 <asp:TextBox ID="TextBoxNacimiento" runat="server" CssClass="estilotxtBox" type="date" placeholder="Fecha de Nacimiento"></asp:TextBox>
             </td>
             <td>
-                <asp:DropDownList ID="DropDownListPais" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownListPais_SelectedIndexChanged"></asp:DropDownList>
+                <asp:DropDownList ID="DropDownListPais" runat="server" OnFocus="loadDropDownListData();" AutoPostBack="true" OnSelectedIndexChanged="DropDownListPais_SelectedIndexChanged"></asp:DropDownList>
                 <br />
                 <asp:TextBox ID="TextBoxPais" runat="server" CssClass="estilotxtBox" enabled="false" placeholder="País de Nacimiento"></asp:TextBox>
             </td>
@@ -177,7 +177,7 @@
                 <asp:DropDownList ID="DropDownListPlan" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownListPlan_SelectedIndexChanged">
                 </asp:DropDownList>
                 <br />
-                <asp:TextBox ID="TextBoxP" runat="server" CssClass="estilotxtBox" placeholder="Plan de estudio" Enabled="False"></asp:TextBox>
+                <asp:TextBox ID="TextBoxP" runat="server" CssClass="estilotxtBox" placeholder="Plan de estudio"></asp:TextBox>
             </td>
         </tr>
 

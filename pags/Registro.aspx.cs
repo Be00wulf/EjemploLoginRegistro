@@ -29,7 +29,9 @@ namespace pmLOGIN.pags
                 CargarGenero();
                 CargarDepartamento();
                 CargarSede();
+                //DropDownListPais.Items.Clear();
             }
+            //DropDownListPais.Items.Clear();
         }
 
         //SEDE - CARRERA Y PLAN, ENLAZADOS
@@ -266,40 +268,108 @@ namespace pmLOGIN.pags
             string tituloFecha = TextBoxTituloFecha.Text;
             string institucion = TextBoxInstitucion.Text;
 
-            //agregando la linea con los nuevos datos
-            string linea = $"{nombre1}," +
-                $"{nombre2}," +
-                $"{nombreN}," +
-                $"{apellido1}," +
-                $"{apellido2}," +
-                $"{apellidoN}," +
-                $"{cui}," +
-                $"{nacimiento}," +
-                $"{pais}," +
-                $"{genero}," +
-                $"{estadoCivil}," +
-                $"{residencia}," +
-                $"{departamento}," +
-                $"{municipio}," +
-                $"{tel}," +
-                $"{mail}," +
-                $"{emergName}," +
-                $"{emergTel}," +
-                $"{sesde}," +
-                $"{carrera}," +
-                $"{plan}," +
-                $"{titulo}," +
-                $"{tituloFecha}," +
-                $"{institucion}";
-
-            // Guardar en el archivo de texto
-            string path = Server.MapPath("~/txt/Inscripciones2.txt");
-            using (StreamWriter escribir = new StreamWriter(path, true))
+            if (
+                (nombre1 != "" &&
+                nombre2 != "" &&
+                nombreN != "" &&
+                apellido1 != "" &&
+                apellido2 != "" &&
+                apellidoN != "" &&
+                cui != "" &&
+                nacimiento != "" &&
+                pais != "" &&
+                genero != "" &&
+                estadoCivil != "" &&
+                residencia != "" &&
+                departamento != "" &&
+                municipio != "" &&
+                tel != "" &&
+                mail != "" &&
+                emergName != "" &&
+                emergTel != "" &&
+                sesde != "" &&
+                carrera != "" &&
+                plan != "" &&
+                titulo != "" &&
+                tituloFecha != "" &&
+                institucion != "")
+                )
             {
-                escribir.WriteLine(linea);
+                //agregando la linea con los nuevos datos
+                string linea = $"{nombre1}," +
+                    $"{nombre2}," +
+                    $"{nombreN}," +
+                    $"{apellido1}," +
+                    $"{apellido2}," +
+                    $"{apellidoN}," +
+                    $"{cui}," +
+                    $"{nacimiento}," +
+                    $"{pais}," +
+                    $"{genero}," +
+                    $"{estadoCivil}," +
+                    $"{residencia}," +
+                    $"{departamento}," +
+                    $"{municipio}," +
+                    $"{tel}," +
+                    $"{mail}," +
+                    $"{emergName}," +
+                    $"{emergTel}," +
+                    $"{sesde}," +
+                    $"{carrera}," +
+                    $"{plan}," +
+                    $"{titulo}," +
+                    $"{tituloFecha}," +
+                    $"{institucion}";
+
+                // Guardar en el archivo de texto
+                string path = Server.MapPath("~/txt/Inscripciones2.txt");
+                using (StreamWriter escribir = new StreamWriter(path, true))
+                {
+                    escribir.WriteLine(linea);
+                }
+
+                Response.Write("<script language=javascript>alert('Se ha ingresado el cliente exitosamente')</script>");
             }
 
-            Response.Write("<script language=javascript>alert('Se ha ingresado el cliente exitosamente')</script>");
+            else
+            {
+                Response.Write("<script language=javascript>alert('Algunos campos están vacíos')</script>");
+            }
+
+            ////agregando la linea con los nuevos datos
+            //string linea = $"{nombre1}," +
+            //    $"{nombre2}," +
+            //    $"{nombreN}," +
+            //    $"{apellido1}," +
+            //    $"{apellido2}," +
+            //    $"{apellidoN}," +
+            //    $"{cui}," +
+            //    $"{nacimiento}," +
+            //    $"{pais}," +
+            //    $"{genero}," +
+            //    $"{estadoCivil}," +
+            //    $"{residencia}," +
+            //    $"{departamento}," +
+            //    $"{municipio}," +
+            //    $"{tel}," +
+            //    $"{mail}," +
+            //    $"{emergName}," +
+            //    $"{emergTel}," +
+            //    $"{sesde}," +
+            //    $"{carrera}," +
+            //    $"{plan}," +
+            //    $"{titulo}," +
+            //    $"{tituloFecha}," +
+            //    $"{institucion}";
+
+            //// Guardar en el archivo de texto
+            //string path = Server.MapPath("~/txt/Inscripciones2.txt");
+            //using (StreamWriter escribir = new StreamWriter(path, true))
+            //{
+            //    escribir.WriteLine(linea);
+            //}
+
+            //Response.Write("<script language=javascript>alert('Se ha ingresado el cliente exitosamente')</script>");
         }
 
         protected void DropDownListGenero_SelectedIndexChanged(object sender, EventArgs e)
