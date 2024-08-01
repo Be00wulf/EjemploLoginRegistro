@@ -29,6 +29,25 @@ namespace pmLOGIN.pags
             tablaRegistros.Columns.Add("Fecha de Nacimiento");
             tablaRegistros.Columns.Add("País de nacimiento");
 
+            tablaRegistros.Columns.Add("Género");
+            tablaRegistros.Columns.Add("Estado Civil");
+            tablaRegistros.Columns.Add("Dirección");
+
+            tablaRegistros.Columns.Add("Departamento");
+            tablaRegistros.Columns.Add("Municipio");
+            tablaRegistros.Columns.Add("Telefono");
+
+            tablaRegistros.Columns.Add("Correo");
+            tablaRegistros.Columns.Add("Contacto de Emergencia");
+            tablaRegistros.Columns.Add("Telefono de Emergencia");
+
+            tablaRegistros.Columns.Add("Sede");
+            tablaRegistros.Columns.Add("Carrera");
+            tablaRegistros.Columns.Add("Plan");
+
+            tablaRegistros.Columns.Add("Titulo");
+            tablaRegistros.Columns.Add("Fecha Del Titulo");
+            tablaRegistros.Columns.Add("Institucion");
 
             if (!IsPostBack)
             {

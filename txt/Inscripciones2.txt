@@ -1,2 +1,2 @@
 ﻿Mariana,Lucia,Dominga,Casas,Rosas,Lucero,123,11/11/1990,Guatemala
-aa,bb,cc,dd,ee,ff,567,11/05/2001,Paraguay
+prueba6,bb,cc,dd,ee,ff,567,2005-12-14,Bolivia,Masculino,Casado,qq,Suchitepéquez,Samayac,99,qqqqqs@wwe.com,as,sa,Retalhuleu,TécnicoenPresupuestos,Matutina,ww,2024-12-15,tyty

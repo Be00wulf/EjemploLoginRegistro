@@ -267,7 +267,30 @@ namespace pmLOGIN.pags
             string institucion = TextBoxInstitucion.Text;
 
             //agregando la linea con los nuevos datos
-            string linea = $"{nombre1},{nombre2},{nombreN},{apellido1},{apellido2},{apellidoN},{cui},{nacimiento},{pais}";
+            string linea = $"{nombre1}," +
+                $"{nombre2}," +
+                $"{nombreN}," +
+                $"{apellido1}," +
+                $"{apellido2}," +
+                $"{apellidoN}," +
+                $"{cui}," +
+                $"{nacimiento}," +
+                $"{pais}," +
+                $"{genero}," +
+                $"{estadoCivil}," +
+                $"{residencia}," +
+                $"{departamento}," +
+                $"{municipio}," +
+                $"{tel}," +
+                $"{mail}," +
+                $"{emergName}," +
+                $"{emergTel}," +
+                $"{sesde}," +
+                $"{carrera}," +
+                $"{plan}," +
+                $"{titulo}," +
+                $"{tituloFecha}," +
+                $"{institucion}";
 
             // Guardar en el archivo de texto
             string path = Server.MapPath("~/txt/Inscripciones2.txt");
