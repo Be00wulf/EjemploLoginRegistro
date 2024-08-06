@@ -1,4 +1,4 @@
-﻿0,Seleccionar,0
+﻿0,SeleccionarPlan,0
 1,Vespertina,1
 2,Matutina,2
 3,Vespertina,2

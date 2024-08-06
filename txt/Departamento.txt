@@ -1,4 +1,4 @@
-﻿0,Seleccionar
+﻿0,SeleccionarDepartamento
 1,Quetzaltenango
 2,Totonicapán
 3,San Marcos

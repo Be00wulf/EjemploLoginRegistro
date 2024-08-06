@@ -1,4 +1,4 @@
-﻿0,Seleccionar,0
+﻿0,SeleccionarMunicipio,0
 1,Almolonga,1
 2,Cantel,1
 3,Coatepeque,1

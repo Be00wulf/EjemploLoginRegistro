@@ -1,4 +1,4 @@
-﻿0,Seleccionar
+﻿0,SeleccionarPais
 1,Argentina
 2,Bolivia
 3,Brasil
