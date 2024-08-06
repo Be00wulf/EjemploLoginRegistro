@@ -29,10 +29,12 @@ namespace pmLOGIN.pags
                 CargarGenero();
                 CargarDepartamento();
                 CargarSede();
-                //DropDownListPais.Items.Clear();
 
+                CargarEstadoCivil();
+                CargarMunicipio();
+                CargarCarrera();
+                CargarPlan();
             }
-            //DropDownListPais.Items.Clear();
         }
 
         //SEDE - CARRERA Y PLAN, ENLAZADOS
@@ -143,7 +145,6 @@ namespace pmLOGIN.pags
             DropDownListMunicipio.DataBind();
         }
 
-        //ctrl K C: comentar         cttrl K U: descomentar
         public void CargarDepartamento()
         {
             tablaDepartamento.Columns.Add("Codigo");
@@ -216,7 +217,6 @@ namespace pmLOGIN.pags
         {
             tablaPaises.Columns.Add("Codigo");
             tablaPaises.Columns.Add("Pais");
-            //recordar ~/ al inicio del "" luego del mapPath para ir a la raiz
             StreamReader leer = new StreamReader(Server.MapPath("~/txt/PaisesLatinoamericanos.txt"));
 
             while (!leer.EndOfStream)
@@ -235,9 +235,7 @@ namespace pmLOGIN.pags
 
         protected void DropDownListPais_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //mostrando el texto de la selección en el text box
-            //TextBoxPais.Text = DropDownListPais.Items[0].Text;
-            //TextBoxPais.Text = DropDownListPais.SelectedItem.Text;
+
         }
 
         protected void ButtonGenerarForm_Click(object sender, EventArgs e)
@@ -252,17 +250,12 @@ namespace pmLOGIN.pags
 
             string cui = TextBoxCUI.Text;
             string nacimiento = TextBoxNacimiento.Text;
-            //string pais = TextBoxPais.Text;                 //codigo pais
             string pais = "[" + DropDownListPais.SelectedValue + "]" + DropDownListPais.SelectedItem.Text;
 
-            //string genero = TextBoxGenero.Text;             //cod
             string genero = "[" + DropDownListGenero.SelectedValue + "]" + DropDownListGenero.SelectedItem.Text;
-            //string estadoCivil = TextBoxEstadoCivil.Text;   //cod
             string estadoCivil = "[" + DropDownListEstadoCivil.SelectedValue + "]" + DropDownListEstadoCivil.SelectedItem.Text;
             string residencia = TextBoxDireccion.Text;
 
-            //string departamento = TextBoxDepto.Text;        //cod
-            //string municipio = TextBoxMunp.Text;            //cod
             string departamento = "[" + DropDownListDepto.SelectedValue + "]" + DropDownListDepto.SelectedItem.Text;
             string municipio = "[" + DropDownListMunicipio.SelectedValue + "]" + DropDownListMunicipio.SelectedItem.Text;
             string tel = TextBoxTel.Text;
@@ -271,9 +264,6 @@ namespace pmLOGIN.pags
             string emergName = TextBoxEmergName.Text;
             string emergTel = TextBoxEmergTel.Text;
 
-            //string sesde = TextBoxSede.Text;                //cod
-            //string carrera = TextBoxCarrera.Text;           //cod
-            //string plan = TextBoxP.Text;                    //cod
             string sesde = "[" + DropDownListSede.SelectedValue + "]" + DropDownListSede.SelectedItem.Text;
             string carrera = "[" + DropDownListCarrera.SelectedValue + "]" + DropDownListCarrera.SelectedItem.Text;
             string plan = "[" + DropDownListPlan.SelectedValue + "]" + DropDownListPlan.SelectedItem.Text;
@@ -284,11 +274,7 @@ namespace pmLOGIN.pags
 
             if (
                 (nombre1 != "" &&
-                //nombre2 != "" &&
-                //nombreN != "" &&
                 apellido1 != "" &&
-                //apellido2 != "" &&
-                //apellidoN != "" &&
                 cui != "" &&
                 nacimiento != "" &&
                 pais != "" &&
@@ -355,37 +341,30 @@ namespace pmLOGIN.pags
         protected void DropDownListGenero_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarEstadoCivil();
-            //TextBoxEstadoCivil.Text = DropDownListEstadoCivil.Items[0].Text;
-            //TextBoxGenero.Text = DropDownListGenero.SelectedItem.Text;
         }
 
         protected void DropDownListEstadoCivil_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //TextBoxEstadoCivil.Text = DropDownListEstadoCivil.Items[0].Text;
-            //TextBoxEstadoCivil.Text = DropDownListEstadoCivil.SelectedItem.Text;
         }
 
         protected void DropDownListDepto_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarMunicipio();
-            //TextBoxDepto.Text = DropDownListDepto.SelectedItem.Text;
         }
 
         protected void DropDownListMunicipio_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //TextBoxMunp.Text = DropDownListMunicipio.SelectedItem.Text;
+
         }
 
         protected void DropDownListSede_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarCarrera();
-            //TextBoxSede.Text = DropDownListSede.SelectedItem.Text;
         }
 
         protected void DropDownListCarrera_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarPlan();
-            //TextBoxCarrera.Text = DropDownListCarrera.SelectedItem.Text;
 
             if (DropDownListPlan.Items.Count == 1)
             {
@@ -396,7 +375,7 @@ namespace pmLOGIN.pags
 
         protected void DropDownListPlan_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //TextBoxP.Text = DropDownListPlan.SelectedItem.Text;
+
         }
     }
 }
