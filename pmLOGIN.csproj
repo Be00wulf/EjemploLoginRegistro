@@ -119,6 +119,7 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="css\StyleLOGIN.css" />
+    <Content Include="css\StyleSitios.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -188,6 +189,7 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="txt\Carrera.txt" />
+    <Content Include="txt\CarreraOpt.txt" />
     <Content Include="txt\EstadoCivilF.txt" />
     <Content Include="txt\GeneroM.txt" />
     <Content Include="txt\Inscripciones2.txt" />
@@ -195,6 +197,7 @@
     <Content Include="txt\PaisesLatinoamericanos.txt" />
     <Content Include="txt\Departamento.txt" />
     <Content Include="txt\Plan.txt" />
+    <Content Include="txt\PlanOpt.txt" />
     <Content Include="txt\Sede1.txt" />
     <Content Include="txt\usuarios.txt" />
     <Content Include="ViewSwitcher.ascx" />

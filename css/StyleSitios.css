@@ -1,0 +1,27 @@
+﻿body {
+    background-image: url('../img/MAJO LINEAS.png');
+    background-size: cover;
+    background-position: center;
+    
+}
+
+main {
+    padding: 0 20px; /* Margen interno para el contenido */
+    text-align: justify;
+}
+
+footer {
+    text-align: center;
+}
+
+.txt {
+    color: white;
+}
+
+.txtB {
+    text-align: right;
+}
+
+.txtJustify {
+    text-align: justify;
+}

@@ -75,9 +75,9 @@
         <div class="container-fluid body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-            <hr />
+
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - María José Baquiax Rodríguez</p>
+                <p> <u>&copy; <%: DateTime.Now.DayOfWeek %> - María José Baquiax Rodríguez</u> </p>
             </footer>
         </div>
         <%-- /pie de pagina --%>

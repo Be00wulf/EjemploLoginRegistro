@@ -18,10 +18,10 @@
         }
 
     </style>
+    <link href="css/StyleSitios.css" rel="stylesheet" type="text/css" />
 
     <main aria-labelledby="title">
-        <h2 id="title">Contacto</h2>
-        <h3> <br> Mis redes:</h3>
+        <h3> Mis redes:</h3>
         <address>
             <%--One Microsoft Way<br />
             Redmond, WA 98052-6399<br />
@@ -35,18 +35,19 @@
             </li>
 
             <li>
-                <a class="btn btn-default txt" href="https://www.linkedin.com/in/mar%C3%ADa-jos%C3%A9-baquiax-rodr%C3%ADguez-su/"> <strong> <i>  <u> LinkedIn</u> &raquo;  </i> </strong></a>            </li>
-
-            <li>
-
+                <a class="btn btn-default txt" href="https://www.linkedin.com/in/mar%C3%ADa-jos%C3%A9-baquiax-rodr%C3%ADguez-su/"> <strong> <i>  <u> LinkedIn</u> &raquo;  </i> </strong></a>            
             </li>
 
             <li>
-
+                <a class="btn btn-default txt" href="https://www.tiktok.com/@planito.banana?_t=8oV7VbQwrW2&_r=1"> <strong> <i> <u> TikTok</u> &raquo;    </i> </strong> </a>
             </li>
 
             <li>
+                <a class="btn btn-default txt" href="https://www.instagram.com/planito.banana/"> <strong> <i> <u> Instagram</u> &raquo;    </i> </strong> </a>
+            </li>
 
+            <li>          
+                <a class="btn btn-default txt" href="https://dly.to/NMDWRlvcGmW"> <strong> <i> <u> daily.dev</u> &raquo;    </i> </strong> </a>
             </li>
         </ul>
 

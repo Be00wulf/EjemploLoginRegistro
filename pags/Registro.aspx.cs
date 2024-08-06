@@ -44,14 +44,18 @@ namespace pmLOGIN.pags
             tablaPlan.Columns.Add("CodPlan");
             tablaPlan.Columns.Add("Plan");
             tablaPlan.Columns.Add("CodCarrera");
+            //tablaPlan.Columns.Add("CodCarreraPlan");
 
             StreamReader leer2 = new StreamReader(Server.MapPath("~/txt/Plan.txt"));
+            //StreamReader leer2 = new StreamReader(Server.MapPath("~/txt/PlanOpt.txt"));
+            //StreamReader leerCarrera = new StreamReader(Server.MapPath("~/txt/CarreraOpt.txt"));
 
             while (!leer2.EndOfStream)
             {
                 string linea = leer2.ReadLine();
                 string[] aux = linea.Split(',');
                 if (DropDownListCarrera.SelectedValue == aux[2])      //ojo  enlazado al condicional
+                //if (DropDownListCarrera.SelectedValue == aux[3])      //ojo  enlazado al condicional
                 {
                     tablaPlan.Rows.Add(aux);
                 }
@@ -232,8 +236,8 @@ namespace pmLOGIN.pags
         protected void DropDownListPais_SelectedIndexChanged(object sender, EventArgs e)
         {
             //mostrando el texto de la selección en el text box
-            TextBoxPais.Text = DropDownListPais.Items[0].Text;
-            TextBoxPais.Text = DropDownListPais.SelectedItem.Text;
+            //TextBoxPais.Text = DropDownListPais.Items[0].Text;
+            //TextBoxPais.Text = DropDownListPais.SelectedItem.Text;
         }
 
         protected void ButtonGenerarForm_Click(object sender, EventArgs e)
@@ -248,23 +252,31 @@ namespace pmLOGIN.pags
 
             string cui = TextBoxCUI.Text;
             string nacimiento = TextBoxNacimiento.Text;
-            string pais = TextBoxPais.Text;
+            //string pais = TextBoxPais.Text;                 //codigo pais
+            string pais = "[" + DropDownListPais.SelectedValue + "]" + DropDownListPais.SelectedItem.Text;
 
-            string genero = TextBoxGenero.Text;
-            string estadoCivil = TextBoxEstadoCivil.Text;
+            //string genero = TextBoxGenero.Text;             //cod
+            string genero = "[" + DropDownListGenero.SelectedValue + "]" + DropDownListGenero.SelectedItem.Text;
+            //string estadoCivil = TextBoxEstadoCivil.Text;   //cod
+            string estadoCivil = "[" + DropDownListEstadoCivil.SelectedValue + "]" + DropDownListEstadoCivil.SelectedItem.Text;
             string residencia = TextBoxDireccion.Text;
 
-            string departamento = TextBoxDepto.Text;
-            string municipio = TextBoxMunp.Text;
+            //string departamento = TextBoxDepto.Text;        //cod
+            //string municipio = TextBoxMunp.Text;            //cod
+            string departamento = "[" + DropDownListDepto.SelectedValue + "]" + DropDownListDepto.SelectedItem.Text;
+            string municipio = "[" + DropDownListMunicipio.SelectedValue + "]" + DropDownListMunicipio.SelectedItem.Text;
             string tel = TextBoxTel.Text;
 
             string mail = TextBoxEmail.Text;
             string emergName = TextBoxEmergName.Text;
             string emergTel = TextBoxEmergTel.Text;
 
-            string sesde = TextBoxSede.Text;
-            string carrera = TextBoxCarrera.Text;
-            string plan = TextBoxP.Text;
+            //string sesde = TextBoxSede.Text;                //cod
+            //string carrera = TextBoxCarrera.Text;           //cod
+            //string plan = TextBoxP.Text;                    //cod
+            string sesde = "[" + DropDownListSede.SelectedValue + "]" + DropDownListSede.SelectedItem.Text;
+            string carrera = "[" + DropDownListCarrera.SelectedValue + "]" + DropDownListCarrera.SelectedItem.Text;
+            string plan = "[" + DropDownListPlan.SelectedValue + "]" + DropDownListPlan.SelectedItem.Text;
 
             string titulo = TextBoxTitulo.Text;
             string tituloFecha = TextBoxTituloFecha.Text;
@@ -272,11 +284,11 @@ namespace pmLOGIN.pags
 
             if (
                 (nombre1 != "" &&
-                nombre2 != "" &&
-                nombreN != "" &&
+                //nombre2 != "" &&
+                //nombreN != "" &&
                 apellido1 != "" &&
-                apellido2 != "" &&
-                apellidoN != "" &&
+                //apellido2 != "" &&
+                //apellidoN != "" &&
                 cui != "" &&
                 nacimiento != "" &&
                 pais != "" &&
@@ -343,48 +355,48 @@ namespace pmLOGIN.pags
         protected void DropDownListGenero_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarEstadoCivil();
-            TextBoxEstadoCivil.Text = DropDownListEstadoCivil.Items[0].Text;
-            TextBoxGenero.Text = DropDownListGenero.SelectedItem.Text;
+            //TextBoxEstadoCivil.Text = DropDownListEstadoCivil.Items[0].Text;
+            //TextBoxGenero.Text = DropDownListGenero.SelectedItem.Text;
         }
 
         protected void DropDownListEstadoCivil_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TextBoxEstadoCivil.Text = DropDownListEstadoCivil.Items[0].Text;
-            TextBoxEstadoCivil.Text = DropDownListEstadoCivil.SelectedItem.Text;
+            //TextBoxEstadoCivil.Text = DropDownListEstadoCivil.Items[0].Text;
+            //TextBoxEstadoCivil.Text = DropDownListEstadoCivil.SelectedItem.Text;
         }
 
         protected void DropDownListDepto_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarMunicipio();
-            TextBoxDepto.Text = DropDownListDepto.SelectedItem.Text;
+            //TextBoxDepto.Text = DropDownListDepto.SelectedItem.Text;
         }
 
         protected void DropDownListMunicipio_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TextBoxMunp.Text = DropDownListMunicipio.SelectedItem.Text;
+            //TextBoxMunp.Text = DropDownListMunicipio.SelectedItem.Text;
         }
 
         protected void DropDownListSede_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarCarrera();
-            TextBoxSede.Text = DropDownListSede.SelectedItem.Text;
+            //TextBoxSede.Text = DropDownListSede.SelectedItem.Text;
         }
 
         protected void DropDownListCarrera_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarPlan();
-            TextBoxCarrera.Text = DropDownListCarrera.SelectedItem.Text;
+            //TextBoxCarrera.Text = DropDownListCarrera.SelectedItem.Text;
 
             if (DropDownListPlan.Items.Count == 1)
             {
                 // Establece el texto del TextBox con el primer elemento del DropDownList
-                TextBoxP.Text = DropDownListPlan.Items[0].Text;
+                DropDownListPlan.SelectedValue = DropDownListPlan.Items[0].Text;                //OJO REVISAR
             }
         }
 
         protected void DropDownListPlan_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TextBoxP.Text = DropDownListPlan.SelectedItem.Text;
+            //TextBoxP.Text = DropDownListPlan.SelectedItem.Text;
         }
     }
 }

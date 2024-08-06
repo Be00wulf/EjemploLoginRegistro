@@ -96,15 +96,6 @@ namespace pmLOGIN.pags
         protected global::System.Web.UI.WebControls.DropDownList DropDownListPais;
 
         /// <summary>
-        /// Control TextBoxPais.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxPais;
-
-        /// <summary>
         /// Control DropDownListGenero.
         /// </summary>
         /// <remarks>
@@ -114,15 +105,6 @@ namespace pmLOGIN.pags
         protected global::System.Web.UI.WebControls.DropDownList DropDownListGenero;
 
         /// <summary>
-        /// Control TextBoxGenero.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxGenero;
-
-        /// <summary>
         /// Control DropDownListEstadoCivil.
         /// </summary>
         /// <remarks>
@@ -130,15 +112,6 @@ namespace pmLOGIN.pags
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownListEstadoCivil;
-
-        /// <summary>
-        /// Control TextBoxEstadoCivil.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxEstadoCivil;
 
         /// <summary>
         /// Control TextBoxDireccion.
@@ -159,15 +132,6 @@ namespace pmLOGIN.pags
         protected global::System.Web.UI.WebControls.DropDownList DropDownListDepto;
 
         /// <summary>
-        /// Control TextBoxDepto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxDepto;
-
-        /// <summary>
         /// Control DropDownListMunicipio.
         /// </summary>
         /// <remarks>
@@ -175,15 +139,6 @@ namespace pmLOGIN.pags
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownListMunicipio;
-
-        /// <summary>
-        /// Control TextBoxMunp.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxMunp;
 
         /// <summary>
         /// Control TextBoxTel.
@@ -231,15 +186,6 @@ namespace pmLOGIN.pags
         protected global::System.Web.UI.WebControls.DropDownList DropDownListSede;
 
         /// <summary>
-        /// Control TextBoxSede.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxSede;
-
-        /// <summary>
         /// Control DropDownListCarrera.
         /// </summary>
         /// <remarks>
@@ -249,15 +195,6 @@ namespace pmLOGIN.pags
         protected global::System.Web.UI.WebControls.DropDownList DropDownListCarrera;
 
         /// <summary>
-        /// Control TextBoxCarrera.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxCarrera;
-
-        /// <summary>
         /// Control DropDownListPlan.
         /// </summary>
         /// <remarks>
@@ -265,15 +202,6 @@ namespace pmLOGIN.pags
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownListPlan;
-
-        /// <summary>
-        /// Control TextBoxP.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxP;
 
         /// <summary>
         /// Control TextBoxTitulo.

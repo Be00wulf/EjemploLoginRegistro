@@ -83,7 +83,6 @@
             <td>
                 <asp:DropDownList ID="DropDownListPais" runat="server" OnFocus="loadDropDownListData();" AutoPostBack="true" OnSelectedIndexChanged="DropDownListPais_SelectedIndexChanged"></asp:DropDownList>
                 <br />
-                <asp:TextBox ID="TextBoxPais" runat="server" CssClass="estilotxtBox" enabled="false" placeholder="País de Nacimiento"></asp:TextBox>
             </td>
         </tr>
 
@@ -92,16 +91,13 @@
                 <asp:DropDownList ID="DropDownListGenero" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownListGenero_SelectedIndexChanged">
                 </asp:DropDownList>
                 <br />
-                <asp:TextBox ID="TextBoxGenero" runat="server" CssClass="estilotxtBox" placeholder="Género" Enabled="False"></asp:TextBox>
             </td>
             <td>
                 <asp:DropDownList ID="DropDownListEstadoCivil" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownListEstadoCivil_SelectedIndexChanged">
                 </asp:DropDownList>
                 <br />
-                <asp:TextBox ID="TextBoxEstadoCivil" runat="server" CssClass="estilotxtBox" placeholder="Estado Civil" Enabled="False"></asp:TextBox>
             </td>
             <td>
-                <br />
                 <asp:TextBox ID="TextBoxDireccion" runat="server" CssClass="estilotxtBox" placeholder="Dirección de residencaia"></asp:TextBox>
             </td>
         </tr>
@@ -111,16 +107,13 @@
                 <asp:DropDownList ID="DropDownListDepto" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownListDepto_SelectedIndexChanged">
                 </asp:DropDownList>
                 <br />
-                <asp:TextBox ID="TextBoxDepto" runat="server" CssClass="estilotxtBox" placeholder="Departamento" Enabled="False"></asp:TextBox>
             </td>
             <td>
                 <asp:DropDownList ID="DropDownListMunicipio" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownListMunicipio_SelectedIndexChanged">
                 </asp:DropDownList>
                 <br />
-                <asp:TextBox ID="TextBoxMunp" runat="server" CssClass="estilotxtBox" placeholder="Municipio" Enabled="False"></asp:TextBox>
             </td>
             <td>
-                <br />
                 <asp:TextBox ID="TextBoxTel" type="number" runat="server" CssClass="estilotxtBox" placeholder="Teléfono Celular"></asp:TextBox>
             </td>
         </tr>
@@ -165,19 +158,16 @@
                 <asp:DropDownList ID="DropDownListSede" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownListSede_SelectedIndexChanged">
                 </asp:DropDownList>
                 <br />
-                <asp:TextBox ID="TextBoxSede" runat="server" CssClass="estilotxtBox" placeholder="Sede" Enabled="False"></asp:TextBox>
             </td>
             <td>
                 <asp:DropDownList ID="DropDownListCarrera" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownListCarrera_SelectedIndexChanged">
                 </asp:DropDownList>
                 <br />
-                <asp:TextBox ID="TextBoxCarrera" runat="server" CssClass="estilotxtBox" placeholder="Carrera a la que aplica" Enabled="False"></asp:TextBox>
             </td>
             <td>
                 <asp:DropDownList ID="DropDownListPlan" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownListPlan_SelectedIndexChanged">
                 </asp:DropDownList>
                 <br />
-                <asp:TextBox ID="TextBoxP" runat="server" CssClass="estilotxtBox" placeholder="Plan de estudio" Enabled="False"></asp:TextBox>
             </td>
         </tr>
 
