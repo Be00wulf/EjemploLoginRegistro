@@ -343,18 +343,9 @@ namespace pmLOGIN.pags
             CargarEstadoCivil();
         }
 
-        protected void DropDownListEstadoCivil_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
         protected void DropDownListDepto_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarMunicipio();
-        }
-
-        protected void DropDownListMunicipio_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         protected void DropDownListSede_SelectedIndexChanged(object sender, EventArgs e)
@@ -371,11 +362,6 @@ namespace pmLOGIN.pags
                 // Establece el texto del TextBox con el primer elemento del DropDownList
                 DropDownListPlan.SelectedValue = DropDownListPlan.Items[0].Text;                //OJO REVISAR
             }
-        }
-
-        protected void DropDownListPlan_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

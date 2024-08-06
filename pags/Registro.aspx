@@ -93,7 +93,7 @@
                 <br />
             </td>
             <td>
-                <asp:DropDownList ID="DropDownListEstadoCivil" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownListEstadoCivil_SelectedIndexChanged">
+                <asp:DropDownList ID="DropDownListEstadoCivil" runat="server" AutoPostBack="true">
                 </asp:DropDownList>
                 <br />
             </td>
@@ -109,7 +109,7 @@
                 <br />
             </td>
             <td>
-                <asp:DropDownList ID="DropDownListMunicipio" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownListMunicipio_SelectedIndexChanged">
+                <asp:DropDownList ID="DropDownListMunicipio" runat="server" AutoPostBack="True" >
                 </asp:DropDownList>
                 <br />
             </td>
@@ -165,7 +165,7 @@
                 <br />
             </td>
             <td>
-                <asp:DropDownList ID="DropDownListPlan" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownListPlan_SelectedIndexChanged">
+                <asp:DropDownList ID="DropDownListPlan" runat="server" AutoPostBack="True" >
                 </asp:DropDownList>
                 <br />
             </td>
