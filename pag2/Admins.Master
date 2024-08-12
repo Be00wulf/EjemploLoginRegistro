@@ -1,0 +1,45 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admins.master.cs" Inherits="pmLOGIN.pag2.Admins" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>ADMINISTRADORES</title>
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="img/MAJOcctrcs.png" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <header>
+                <div class="container-fluid">
+                    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark ">
+                        <asp:HyperLink ID="lnkPerfil" class="textoSimple" runat="server" NavigateUrl="~/">Pagina principal</asp:HyperLink>
+
+
+                    </nav>
+                </div>
+            </header>
+
+            <%-- CONT --%>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+            <%-- FIN CONT --%>
+
+            <footer>
+                <div style="text-align:center; padding:10px; background-color:#F0F0F0;">
+                    <u>&copy; <%: DateTime.Now.DayOfWeek %> - María José Baquiax Rodríguez</u>
+                    <a class="nav-link" runat="server" href="~/">MJBR</a>
+                </div>
+            </footer>
+
+        </div>
+    </form>
+</body>
+</html>

@@ -127,6 +127,9 @@
     <Content Include="img\icoForm.png" />
     <Content Include="img\MAJO LINEAS.png" />
     <Content Include="img\MAJOcctrcs.png" />
+    <Content Include="pag2\Login.aspx" />
+    <Content Include="pag2\Perfil.aspx" />
+    <Content Include="pag2\Registro.aspx" />
     <Content Include="pags\DatosRegistrados.aspx" />
     <Content Include="pags\LogIn.aspx" />
     <Content Include="pags\NuevoUsuario.aspx" />
@@ -160,6 +163,7 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="pag2\Admins.Master" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -231,6 +235,34 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="pag2\Admins.Master.cs">
+      <DependentUpon>Admins.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pag2\Admins.Master.designer.cs">
+      <DependentUpon>Admins.Master</DependentUpon>
+    </Compile>
+    <Compile Include="pag2\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pag2\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pag2\Perfil.aspx.cs">
+      <DependentUpon>Perfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pag2\Perfil.aspx.designer.cs">
+      <DependentUpon>Perfil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pag2\Registro.aspx.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pag2\Registro.aspx.designer.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
     </Compile>
     <Compile Include="pags\DatosRegistrados.aspx.cs">
       <DependentUpon>DatosRegistrados.aspx</DependentUpon>
