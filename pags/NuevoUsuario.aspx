@@ -7,16 +7,16 @@
     <table class="custom-table">
         <tr>
             <td>
-                <h1 class="textoSimple">¿No tienes una 
-                                 <strong class="textoResaltado"> cuenta?</strong>
+                <h1 class="textoSimple">Sitio de
+                                 <strong class="textoResaltado"> administradores</strong>
                 </h1>
             </td>
         </tr>
 
         <tr>
             <td>
-                <h6 class="textoResaltado">Sitio de registro 
-                                 <strong class="textoSimple"> Crea una cuenta</strong>
+                <h6 class="textoResaltado">Crea una 
+                                 <strong class="textoSimple"> cuenta</strong>
                 </h6>
             </td>
         </tr>

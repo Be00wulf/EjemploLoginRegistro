@@ -15,7 +15,7 @@
 
         <tr>
             <td>
-                <h6 class="textoResaltado">Sitio de usuarios
+                <h6 class="textoResaltado">Sitio de administradores
                                     <strong class="textoSimple"> Ingresar datos</strong>
                 </h6>
             </td>

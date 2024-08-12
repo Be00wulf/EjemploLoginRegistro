@@ -1,0 +1,5 @@
+﻿0,SeleccionarCarrera
+1,LicenciaturaenCienciasJurídicasySocialesAbogadoyNotario
+2,IngenieríaenSistemasInformáticayCienciasdelaComputación
+3,IngenieríaenTelecomunicaciones
+4,IngenieríaenElectrónicaInformáticayCienciasdelaComputación

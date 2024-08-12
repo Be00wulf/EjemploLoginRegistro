@@ -59,11 +59,17 @@
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/About">Acerca de</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contacto</a></li>
-                        <%--<li class="nav-item"><a class="nav-link" runat="server" href="~/pags/Registro.aspx">Registro</a></li>--%>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/pag2/Registro.aspx">Preinscripciones</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/pag2/Login.aspx">LogIn</a></li>
-                        <%--<li class="nav-item"><a class="nav-link" runat="server" href="~/pags/Perfil.aspx">Perfil</a></li>--%>
-                        <%--<li class="nav-item"><a class="nav-link" runat="server" href="~/pags/NuevoUsuario.aspx">Nuevo usuario</a></li>--%>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/pags/Registro.aspx">Preinscripciones</a></li>
+<%--                        <li class="nav-item"><a class="nav-link" runat="server" href="~/pag2/Registro.aspx">Preinscripciones</a></li>--%>
+                        <%--<li class="nav-item"><a class="nav-link" runat="server" href="~/pag2/Login.aspx">LogIn</a></li>--%>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/pags/LogIn.aspx">LogIn</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/pags/Perfil.aspx">Perfil</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/pags/NuevoUsuario.aspx">Nuevo usuario</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/pags/DatosRegistrados.aspx">Datos</a></li>
+
+
+
+
                     </ul>
                 </div>
             </div>

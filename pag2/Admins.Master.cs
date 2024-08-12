@@ -11,7 +11,19 @@ namespace pmLOGIN.pag2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if (Session["Username"] != null)
+                {
+                    lblUsername.Text = "Hola, " + Session["Username"].ToString();
+                }
+                else
+                {
+                    lblUsername.Text = ""; // 
+                    // Redirigir al login si no hay sesión activa
+                    Response.Redirect("~/pag2/Perfil.aspx");
+                }
+            }
         }
     }
 }

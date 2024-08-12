@@ -18,12 +18,18 @@
     <form id="form1" runat="server">
         <div>
             <header>
+                
+
                 <div class="container-fluid">
                     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark ">
                         <asp:HyperLink ID="lnkPerfil" class="textoSimple" runat="server" NavigateUrl="~/">Pagina principal</asp:HyperLink>
-
+                        <asp:HyperLink ID="HyperLink1" class="textoSimple" runat="server" NavigateUrl="~/pag2/Perfil.aspx">Perfil</asp:HyperLink>
 
                     </nav>
+                </div>
+
+                <div>
+                    <asp:Label ID="lblUsername" runat="server" CssClass="username-label"></asp:Label>
                 </div>
             </header>
 
