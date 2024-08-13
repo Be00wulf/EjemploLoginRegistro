@@ -32,7 +32,11 @@
                 &nbsp;<br />
                     <asp:Label ID="lblMensaje" runat="server" ForeColor="Red" Font-Bold="True"></asp:Label>
                     <br />
+                    <asp:Label ID="Label1" runat="server" />
+                    <br />
                     <asp:Button ID="ButtonGuardar" runat="server" Text="Guardar" CssClass="btn-primary" OnClick="ButtonGuardar_Click" />
+                    &nbsp;<asp:Button ID="ButtonRefrescar" runat="server" Text="Refrescar" CssClass="btn-primary" OnClick="ButtonRefrescar_Click" />
+                &nbsp;<asp:Button ID="ButtonEliminar" runat="server" Text="Eliminar" CssClass="btn-primary" OnClick="ButtonEliminar_Click"   />
                 </td>
             </tr>
         </table>

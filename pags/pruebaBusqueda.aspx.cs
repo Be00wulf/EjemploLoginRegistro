@@ -13,6 +13,12 @@ namespace pmLOGIN.pags
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if (Session["Username"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
+
             if (!IsPostBack)
             {
                 LoadGridView();
@@ -106,7 +112,6 @@ namespace pmLOGIN.pags
             GridView1.DataBind();
         }
 
-
         protected void ButtonGuardar_Click(object sender, EventArgs e)
         {
             string codigo = txtCodigo.Text.Trim();
@@ -114,11 +119,16 @@ namespace pmLOGIN.pags
             string carrera = txtCarrera.Text.Trim();
             string jornada = txtJornada.Text.Trim();
 
-            // Leer los archivos y verificar las condiciones
-            bool codigoExiste = VerificarExistenciaEnArchivo(codigo, Server.MapPath("~/txtO/arch4optimo.txt"));
-            bool sedeExiste = VerificarExistenciaEnArchivo(sede, Server.MapPath("~/txtO/archSede.txt"));
-            bool carreraExiste = VerificarExistenciaEnArchivo(carrera, Server.MapPath("~/txtO/archCarrera.txt"));
-            bool jornadaExiste = VerificarExistenciaEnArchivo(jornada, Server.MapPath("~/txtO/archPlan.txt"));
+            string rutaArchivoCodigo = Server.MapPath("~/txtO/arch4optimo.txt");
+            string rutaArchivoSede = Server.MapPath("~/txtO/archSede.txt");
+            string rutaArchivoCarrera = Server.MapPath("~/txtO/archCarrera.txt");
+            string rutaArchivoJornada = Server.MapPath("~/txtO/archPlan.txt");
+
+            // Verificar existencia en los archivos respectivos
+            bool codigoExiste = VerificarExistenciaEnArchivo(codigo, rutaArchivoCodigo);
+            bool sedeExiste = VerificarExistenciaEnArchivo(sede, rutaArchivoSede);
+            bool carreraExiste = VerificarExistenciaEnArchivo(carrera, rutaArchivoCarrera);
+            bool jornadaExiste = VerificarExistenciaEnArchivo(jornada, rutaArchivoJornada);
 
             // Validaciones y mensajes
             if (codigoExiste)
@@ -143,12 +153,14 @@ namespace pmLOGIN.pags
             }
             else
             {
-                // Código para guardar el nuevo registro
+                // Construir la línea en el formato requerido para arch4optimo.txt
+                string nuevaLinea = $"{codigo},{sede},{carrera},{jornada}";
+
+                // Guardar el nuevo registro en el archivo arch4optimo.txt
+                GuardarEnArchivo(nuevaLinea, rutaArchivoCodigo);
+
                 lblMensaje.Text = "Registro guardado con éxito.";
                 lblMensaje.ForeColor = System.Drawing.Color.Green;
-
-                // Lógica para guardar el nuevo registro en el archivo
-                // Puedes agregar el código aquí para escribir en el archivo.
             }
         }
 
@@ -160,19 +172,93 @@ namespace pmLOGIN.pags
                 string[] lineas = File.ReadAllLines(rutaArchivo);
                 foreach (string linea in lineas)
                 {
-                    string[] partes = linea.Split(','); // Divide la línea por la coma
-                    if (partes.Length > 0 && partes[0].Trim() == valor) // Compara con la primera palabra
+                    string[] partes = linea.Split(',');
+                    if (partes.Length > 0 && partes[0].Trim() == valor)
                     {
-                        return true; // Retorna true si encuentra una coincidencia
+                        return true;
                     }
                 }
             }
-            return false; // Retorna false si no hay coincidencia
+            return false;
+        }
+
+        // Método para guardar una nueva línea en el archivo arch4optimo.txt
+        private void GuardarEnArchivo(string nuevaLinea, string rutaArchivo)
+        {
+            // Abrir el archivo para añadir el nuevo valor
+            using (StreamWriter sw = new StreamWriter(rutaArchivo, true))
+            {
+                sw.WriteLine(nuevaLinea);
+            }
+        }
+
+        protected void ButtonRefrescar_Click(object sender, EventArgs e)
+        {
+            txtCodigo.Text = string.Empty;
+            txtSede.Text = string.Empty;
+            txtCarrera.Text = string.Empty;
+            txtJornada.Text = string.Empty;
+
+            // Limpiar el mensaje
+            lblMensaje.Text = string.Empty;
+            lblNoResults.Text = string.Empty;
+            LoadGridView();
         }
 
 
 
 
+
+        protected void ButtonEliminar_Click(object sender, EventArgs e)
+        {
+            string codigoEliminar = txtCodigo.Text.Trim();
+            string rutaArchivo = Server.MapPath("~/txtO/arch4optimo.txt");
+
+            if (EliminarRegistro(codigoEliminar, rutaArchivo))
+            {
+                lblMensaje.Text = "Registro eliminado con éxito.";
+                lblMensaje.ForeColor = System.Drawing.Color.Green;
+            }
+            else
+            {
+                lblMensaje.Text = "El código no existe.";
+                lblMensaje.ForeColor = System.Drawing.Color.Red;
+            }
+        }
+
+        private bool EliminarRegistro(string codigo, string rutaArchivo)
+        {
+            // Leer todas las líneas del archivo
+            string[] lineas = File.ReadAllLines(rutaArchivo);
+            bool encontrado = false;
+
+            // Crear una lista para almacenar las líneas que no deben ser eliminadas
+            List<string> nuevasLineas = new List<string>();
+
+            foreach (string linea in lineas)
+            {
+                string[] partes = linea.Split(',');
+
+                // Comprobar si el primer valor de la línea coincide con el código
+                if (partes[0] == codigo)
+                {
+                    encontrado = true;
+                    // No añadir la línea a la lista, la estamos eliminando
+                }
+                else
+                {
+                    nuevasLineas.Add(linea);
+                }
+            }
+
+            // Si se encontró y eliminó el registro, reescribir el archivo sin el registro eliminado
+            if (encontrado)
+            {
+                File.WriteAllLines(rutaArchivo, nuevasLineas);
+            }
+
+            return encontrado;
+        }
 
 
 

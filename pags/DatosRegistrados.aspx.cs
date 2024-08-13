@@ -16,6 +16,11 @@ namespace pmLOGIN.pags
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Username"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
+
             //definiendo columnas
             tablaRegistros.Columns.Add("Primer nombre");
             tablaRegistros.Columns.Add("Segundo nombre");

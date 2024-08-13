@@ -11,7 +11,10 @@ namespace pmLOGIN.pags
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["Username"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
 
         protected void btnSede_Click(object sender, EventArgs e)

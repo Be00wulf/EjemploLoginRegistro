@@ -11,6 +11,7 @@ namespace pmLOGIN.pags
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (Session["Username"] != null)
             {
                 LabelWC.Text = $"¿Qué te gustaría hacer hoy, {Session["Username"]}?";
@@ -19,7 +20,7 @@ namespace pmLOGIN.pags
             else
             {
                 //nos redirige a crear una cuenta si no tiene perfil
-                Response.Redirect("NuevoUsuario.aspx");
+                Response.Redirect("Login.aspx");
             }
         }
 
