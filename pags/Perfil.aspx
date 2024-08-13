@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Perfil" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Perfil.aspx.cs" Inherits="pmLOGIN.pags.WebForm2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <link href="../css/StyleLOGIN.css" rel="stylesheet" type="text/css" />
+    <link href="../css/Stylenuevo.css" rel="stylesheet" type="text/css" />
          <%-- tabla encabezado --%>
      <table class="custom-table">
          <tr>

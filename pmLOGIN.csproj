@@ -119,6 +119,7 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="css\StyleLOGIN.css" />
+    <Content Include="css\StyleNuevo.css" />
     <Content Include="css\StyleSitios.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
@@ -127,12 +128,19 @@
     <Content Include="img\icoForm.png" />
     <Content Include="img\MAJO LINEAS.png" />
     <Content Include="img\MAJOcctrcs.png" />
+    <Content Include="img\solid.jpg" />
     <Content Include="pag2\Login.aspx" />
     <Content Include="pag2\Perfil.aspx" />
     <Content Include="pag2\Registro.aspx" />
     <Content Include="pags\DatosRegistrados.aspx" />
+    <Content Include="pags\EditarCampos.aspx" />
+    <Content Include="pags\Filtro.aspx" />
     <Content Include="pags\LogIn.aspx" />
+    <Content Include="pags\ModificarCarrera.aspx" />
+    <Content Include="pags\ModificarPlan.aspx" />
+    <Content Include="pags\ModificarSede.aspx" />
     <Content Include="pags\NuevoUsuario.aspx" />
+    <Content Include="pags\pruebaBusqueda.aspx" />
     <Content Include="pags\Registro.aspx" />
     <Content Include="pags\Perfil.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -192,6 +200,10 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="txtO\arch4optimo.txt" />
+    <Content Include="txtO\archCarrera.txt" />
+    <Content Include="txtO\archPlan.txt" />
+    <Content Include="txtO\archSede.txt" />
     <Content Include="txt\Carrera.txt" />
     <Content Include="txt\CarreraOpt.txt" />
     <Content Include="txt\EstadoCivilF.txt" />
@@ -271,6 +283,20 @@
     <Compile Include="pags\DatosRegistrados.aspx.designer.cs">
       <DependentUpon>DatosRegistrados.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pags\EditarCampos.aspx.cs">
+      <DependentUpon>EditarCampos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pags\EditarCampos.aspx.designer.cs">
+      <DependentUpon>EditarCampos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pags\Filtro.aspx.cs">
+      <DependentUpon>Filtro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pags\Filtro.aspx.designer.cs">
+      <DependentUpon>Filtro.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pags\LogIn.aspx.cs">
       <DependentUpon>LogIn.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -278,12 +304,40 @@
     <Compile Include="pags\LogIn.aspx.designer.cs">
       <DependentUpon>LogIn.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pags\ModificarCarrera.aspx.cs">
+      <DependentUpon>ModificarCarrera.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pags\ModificarCarrera.aspx.designer.cs">
+      <DependentUpon>ModificarCarrera.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pags\ModificarPlan.aspx.cs">
+      <DependentUpon>ModificarPlan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pags\ModificarPlan.aspx.designer.cs">
+      <DependentUpon>ModificarPlan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pags\ModificarSede.aspx.cs">
+      <DependentUpon>ModificarSede.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pags\ModificarSede.aspx.designer.cs">
+      <DependentUpon>ModificarSede.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pags\NuevoUsuario.aspx.cs">
       <DependentUpon>NuevoUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="pags\NuevoUsuario.aspx.designer.cs">
       <DependentUpon>NuevoUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pags\pruebaBusqueda.aspx.cs">
+      <DependentUpon>pruebaBusqueda.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pags\pruebaBusqueda.aspx.designer.cs">
+      <DependentUpon>pruebaBusqueda.aspx</DependentUpon>
     </Compile>
     <Compile Include="pags\Registro.aspx.cs">
       <DependentUpon>Registro.aspx</DependentUpon>

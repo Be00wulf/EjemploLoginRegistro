@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <%--<main aria-labelledby="title">--%>
-    <link href="../css/StyleLOGIN.css" rel="stylesheet" type="text/css" />
+    <link href="../css/Stylenuevo.css" rel="stylesheet" type="text/css" />
 
     <%-- tabla encabezado --%>
     <table class="custom-table">
@@ -81,19 +81,20 @@
                 <asp:TextBox ID="TextBoxNacimiento" runat="server" CssClass="estilotxtBox" type="date" placeholder="Fecha de Nacimiento"></asp:TextBox>
             </td>
             <td>
-                <asp:DropDownList ID="DropDownListPais" runat="server" OnFocus="loadDropDownListData();" AutoPostBack="true" OnSelectedIndexChanged="DropDownListPais_SelectedIndexChanged"></asp:DropDownList>
+                <br />
+                <asp:DropDownList ID="DropDownListPais" class="dropstilo" runat="server" OnFocus="loadDropDownListData();" AutoPostBack="true" OnSelectedIndexChanged="DropDownListPais_SelectedIndexChanged"></asp:DropDownList>
                 <br />
             </td>
         </tr>
 
         <tr>
             <td>
-                <asp:DropDownList ID="DropDownListGenero" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownListGenero_SelectedIndexChanged">
+                <asp:DropDownList ID="DropDownListGenero" runat="server" class="dropstilo" AutoPostBack="true" OnSelectedIndexChanged="DropDownListGenero_SelectedIndexChanged">
                 </asp:DropDownList>
                 <br />
             </td>
             <td>
-                <asp:DropDownList ID="DropDownListEstadoCivil" runat="server" AutoPostBack="true">
+                <asp:DropDownList ID="DropDownListEstadoCivil" class="dropstilo" runat="server" AutoPostBack="true">
                 </asp:DropDownList>
                 <br />
             </td>
@@ -104,12 +105,12 @@
 
         <tr>
             <td>
-                <asp:DropDownList ID="DropDownListDepto" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownListDepto_SelectedIndexChanged">
+                <asp:DropDownList ID="DropDownListDepto" runat="server" class="dropstilo" AutoPostBack="True" OnSelectedIndexChanged="DropDownListDepto_SelectedIndexChanged">
                 </asp:DropDownList>
                 <br />
             </td>
             <td>
-                <asp:DropDownList ID="DropDownListMunicipio" runat="server" AutoPostBack="True" >
+                <asp:DropDownList ID="DropDownListMunicipio" runat="server" class="dropstilo" AutoPostBack="True" >
                 </asp:DropDownList>
                 <br />
             </td>
@@ -155,17 +156,17 @@
 
         <tr>
             <td>
-                <asp:DropDownList ID="DropDownListSede" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownListSede_SelectedIndexChanged">
+                <asp:DropDownList ID="DropDownListSede" class="dropstilo" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownListSede_SelectedIndexChanged">
                 </asp:DropDownList>
                 <br />
             </td>
             <td>
-                <asp:DropDownList ID="DropDownListCarrera" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownListCarrera_SelectedIndexChanged">
+                <asp:DropDownList ID="DropDownListCarrera" runat="server" class="dropstilo" AutoPostBack="True" OnSelectedIndexChanged="DropDownListCarrera_SelectedIndexChanged">
                 </asp:DropDownList>
                 <br />
             </td>
             <td>
-                <asp:DropDownList ID="DropDownListPlan" runat="server" AutoPostBack="True" >
+                <asp:DropDownList ID="DropDownListPlan" class="dropstilo" runat="server" AutoPostBack="True" >
                 </asp:DropDownList>
                 <br />
             </td>
@@ -190,9 +191,9 @@
     <table class="custom-table">
         <tr class="centered-cell">
             <td>
-                <asp:Button ID="ButtonGenerarForm" class="boton" runat="server" Text="Generar formulario" OnClick="ButtonGenerarForm_Click"  />
+                <asp:Button ID="ButtonGenerarForm" class="btn-primary" runat="server" Text="Generar formulario" OnClick="ButtonGenerarForm_Click"  />
             </td>
         </tr>
 
-    </table>
+    </table> 
 </asp:Content>

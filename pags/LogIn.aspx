@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="LogIn" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="LogIn.aspx.cs" Inherits="pmLOGIN.pags.LogIn" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <link href="../css/StyleLOGIN.css" rel="stylesheet" type="text/css" />
+    <link href="../css/Stylenuevo.css" rel="stylesheet" type="text/css" />
 
     <%-- tabla titulo subtitulo texto --%>
     <table class="custom-table">

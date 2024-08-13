@@ -1,0 +1,146 @@
+﻿body {
+    background-image: url('../img/solid.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+main {
+    text-align: center;
+}
+
+.encabezado {
+    background-color: #AC1F2D;
+    width: 2% 100%;
+    /*text-align: center;*/
+}
+
+.textoSimple {
+    color: white;
+}
+
+.textoAzul {
+    color: #191970;
+}
+
+.textoResaltado {
+    color: black;
+}
+
+.alinDerecha {
+    text-align: right;
+}
+
+.alinCentro {
+    text-align: center;
+    width: 33%;
+}
+
+.alinJustify {
+    text-align: justify;
+}
+
+/*PARA LA TABLA */
+.custom-table {
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 20px; 
+}
+
+    .custom-table th, .custom-table td {
+        /*border: 1px solid #ddd;*/ 
+        padding: 2px; /* Espacio interior */
+        text-align: center; 
+    }
+
+    .custom-table th {
+        background-color: #f2f2f2; 
+        font-weight: bold; 
+    }
+
+.centered-cell {
+    text-align: center; 
+    vertical-align: middle; 
+    height: 100px; 
+}
+
+/*e.e*/
+.container {
+    text-align: center;
+    background-color: #212529;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.info {
+    text-align: justify;
+    background-color: #d0d0d0;
+    padding: 20px;
+    border-radius: 20px;
+    /*box-shadow: 0 0 10px #616161;*/
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.content-section {
+    margin: 20px 0;
+    padding-bottom: 20px;
+    border-bottom: 3px solid #3c3c3c; /* Línea divisoria */
+}
+
+    .content-section h1, .content-section h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    .content-section .lead, .content-section p {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 20px;
+        text-align: justify;
+    }
+
+.btn-primary {
+    background-color: #008B8B;
+    border-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+    .btn-primary:disabled {
+        background-color: #ADD8E6;
+        color: black;
+        cursor: not-allowed;
+    }
+
+.estilotxtBox {
+    background-color: #f9f9f9; 
+    color: #333; 
+    border-radius: 5px; 
+    width: 100%; 
+    padding: 10px; 
+    font-size: 16px;
+    border: 1px solid #ccc; 
+    outline: none; 
+    margin: 10px 0; 
+    box-sizing: border-box; 
+}
+
+.dropstilo {
+    width: 100%; 
+    padding: 10px;
+    border-radius: 5px; 
+    border: 1px solid #ccc; 
+    background-color: #f9f9f9; 
+    font-size: 16px; 
+    color: #333; 
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    appearance: none; 
+    cursor: pointer; 
+}

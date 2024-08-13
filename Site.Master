@@ -66,8 +66,8 @@
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/pags/Perfil.aspx">Perfil</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/pags/NuevoUsuario.aspx">Nuevo usuario</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/pags/DatosRegistrados.aspx">Datos</a></li>
-
-
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/pags/EditarCampos.aspx">Editar campos</a></li>
+                        <%--<li class="nav-item"><a class="nav-link" runat="server" href="~/pags/ModificarCarrera.aspx">Carreras</a></li>--%>
 
 
                     </ul>
