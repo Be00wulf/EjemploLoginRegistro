@@ -16,15 +16,16 @@ namespace pmLOGIN.pags
         private string txtProducto;
         private bool btnEditF, btnEditT;
         private bool btnElimF, btnElimT;
-        string rutaArchivo = "~/txtO/archSede.txt";
-
+        //string rutaArchivo = "~/txtO/archSede.txt";
+        string rutaArchivo = "~/txt/Sede1.txt";
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Username"] == null)
-            {
-                Response.Redirect("Login.aspx");
-            }
+            //verificando sin inicio
+            //if (Session["Username"] == null)
+            //{
+            //    Response.Redirect("Login.aspx");
+            //}
 
             //txtAstr();
             tablaProducto.Columns.Add("CODIGO");

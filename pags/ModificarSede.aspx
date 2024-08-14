@@ -17,7 +17,7 @@
                     </tr>
 
                     <tr>
-                        <td class="auto-style2">SEDE: </td>
+                        <td class="auto-style2">NOMBRE DE LA SEDE: </td>
                         <td class="auto-style4">
                             <asp:TextBox ID="TextBoxProducto" runat="server" CssClass="estilotxtBox" placeholder="Ej: Central"></asp:TextBox>
                         </td>

@@ -20,10 +20,10 @@ namespace pmLOGIN.pags
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Username"] == null)
-            {
-                Response.Redirect("Login.aspx");
-            }
+            //if (Session["Username"] == null)
+            //{
+            //    Response.Redirect("Login.aspx");
+            //}
 
             //txtAstr();
             tablaProducto.Columns.Add("CODIGO");

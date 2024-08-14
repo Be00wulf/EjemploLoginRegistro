@@ -1,15 +1,4 @@
-﻿0,SeleccionarSede
+0,SeleccionarSede
 1,CentralQuetzaltenango
 2,Retalhuleu
-3,Antonio Beristain
-4,Montesquieu
-5,Escuintla
-6,Huehuetenango
-7,UdeOnline
-8,EscuelaTerapiaFísicaOcupacional
-9,SanPedroSacatepéquez SanMarcos
-10,EscueladeGobierno
-11,Zacapa
-12,SantoTomásLaUnión
-13,Coatepeque
-14,Mixco
+3,Beristrain

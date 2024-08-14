@@ -6,7 +6,7 @@
     <div class="info">
         <main>
             <section class="content-section" aria-labelledby="inventTitle">
-                <h1 id="inventTitle">Filtros</h1>
+                <h1 id="inventTitle">Agregar nueva carrera</h1>
 
                 <table class="custom-table">
                     <tr>
@@ -17,23 +17,32 @@
                     </tr>
 
                     <tr>
-                        <td class="alinJustify">CODIGO SEDE: </td>
+                        <td class="alinJustify">SEDE drop: </td>
                         <td class="auto-style4">
                             <asp:TextBox ID="TextBoxCodSede" runat="server" class="estilotxtBox" type="number" placeholder="Ej: 2"></asp:TextBox>
+                            <br />
+                <asp:DropDownList ID="DropDownListAddSede" class="dropstilo" runat="server" AutoPostBack="true">
+                </asp:DropDownList>
                         </td>
                     </tr>
 
                     <tr>
-                        <td class="alinJustify">CODIGO CARRERA: </td>
+                        <td class="alinJustify">CARRERA drop: </td>
                         <td class="auto-style4">
                             <asp:TextBox ID="TextBoxCodCarrera" runat="server" class="estilotxtBox" type="number" placeholder="Ej: 1"></asp:TextBox>
+                            <br />
+                <asp:DropDownList ID="DropDownListAddCarrera" class="dropstilo" runat="server" AutoPostBack="true">
+                </asp:DropDownList>
                         </td>
                     </tr>
 
                     <tr>
-                        <td class="alinJustify">CODIGO PLAN: </td>
+                        <td class="alinJustify">PLAN drop: </td>
                         <td class="auto-style4">
                             <asp:TextBox ID="TextBoxCodPlan" runat="server" class="estilotxtBox" type="number" placeholder="Ej: 2"></asp:TextBox>
+                            <br />
+                <asp:DropDownList ID="DropDownListAddPlan" class="dropstilo" runat="server" AutoPostBack="true">
+                </asp:DropDownList>
                         </td>
                     </tr>
                 </table>

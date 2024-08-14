@@ -22,6 +22,14 @@
                             <asp:TextBox ID="TextBoxProducto" runat="server" CssClass="estilotxtBox" placeholder="Ej: Psicología"></asp:TextBox>
                         </td>
                     </tr>
+
+                    <tr>
+                        <td class="auto-style2">[CODIGO] SEDE: </td>
+                        <td class="auto-style4">
+                <asp:DropDownList ID="DropDownListAddSedeCarrera" class="dropstilo" runat="server" AutoPostBack="true">
+                </asp:DropDownList>
+                        </td>
+                    </tr>
                 </table>
 
 
@@ -47,13 +55,14 @@
                     <tr>
                         <td class="alineaCentro">
                             <asp:Button ID="ButtonBuscar" runat="server" CssClass="btn-primary" Text="BUSCAR CODIGO" OnClick="ButtonBuscar_Click" />
-                            &nbsp;<asp:TextBox ID="TextBoxBuscar" type="number" runat="server" CssClass="estilotxtBox" placeholder="Ingresar CODIGO"></asp:TextBox>
+                            &nbsp;<asp:TextBox ID="TextBoxBuscar" type="number" runat="server" CssClass="estilotxtBox" placeholder="INGRESAR CODIGO DE CARRERA"></asp:TextBox>
                         </td>
                     </tr>
 
                     <tr>
                         <td class="alinD">
-                            <asp:Button ID="ButtonLimpiar" runat="server" CssClass="btn-primary " Text="ACTUALIZAR" OnClick="ButtonLimpiar_Click" />
+                            <br />
+                            <asp:Button ID="ButtonLimpiar" runat="server" CssClass="btn-primary " Text="REFRESCAR" OnClick="ButtonLimpiar_Click" />
                             &nbsp;<asp:Button ID="ButtonINGnuevo0" runat="server" CssClass="btn-primary " Text="CERRAR SESION" OnClick="ButtonINGnuevo0_Click" />
                         </td>
                     </tr>

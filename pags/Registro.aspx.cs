@@ -78,7 +78,8 @@ namespace pmLOGIN.pags
             tablaCarrera.Columns.Add("Carrera");
             tablaCarrera.Columns.Add("CodSede");
 
-            StreamReader leer2 = new StreamReader(Server.MapPath("~/txt/Carrera.txt"));
+            //StreamReader leer2 = new StreamReader(Server.MapPath("~/txt/Carrera.txt"));
+            StreamReader leer2 = new StreamReader(Server.MapPath("~/txtO/archCarrera.txt"));
 
             while (!leer2.EndOfStream)
             {
@@ -357,7 +358,7 @@ namespace pmLOGIN.pags
         {
             CargarPlan();
 
-            if (DropDownListPlan.Items.Count == 1)
+            if (DropDownListPlan.Items.Count == 0)  //==1
             {
                 // Establece el texto del TextBox con el primer elemento del DropDownList
                 DropDownListPlan.SelectedValue = DropDownListPlan.Items[0].Text;                //OJO REVISAR

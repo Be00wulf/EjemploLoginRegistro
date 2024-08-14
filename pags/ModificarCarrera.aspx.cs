@@ -12,26 +12,32 @@ namespace pmLOGIN.pags
     public partial class ModificarCarrera : System.Web.UI.Page
     {
         DataTable tablaProducto = new DataTable();
+        DataTable tablaCarrera = new DataTable();
         private string txtCodigo;
         private string txtProducto;
         private bool btnEditF, btnEditT;
         private bool btnElimF, btnElimT;
-        string rutaArchivo = "~/txtO/archCarrera.txt";
+        string rutaArchivo = "~/txt/Carrera.txt";      //cambiar a txt carrera
+        //
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Username"] == null)
-            {
-                Response.Redirect("Login.aspx");
-            }
+            //if (Session["Username"] == null)
+            //{
+            //    Response.Redirect("Login.aspx");
+            //}
 
             //txtAstr();
-            tablaProducto.Columns.Add("CODIGO");
-            tablaProducto.Columns.Add("DATO");
+            tablaCarrera.Columns.Add("CODIGO");
+            tablaCarrera.Columns.Add("DATO");
+
+            //?
+            tablaCarrera.Columns.Add("CODIGO_SEDE");
 
             if (!IsPostBack)
             {
                 btnOff();
+                CargarSede();
             }
             else
             {
@@ -45,13 +51,36 @@ namespace pmLOGIN.pags
             {
                 string linea = leer.ReadLine();
                 string[] aux = linea.Split(',');
-                tablaProducto.Rows.Add(aux);
+                tablaCarrera.Rows.Add(aux);
             }
             leer.Close();
-            GridView1.DataSource = tablaProducto;
+            GridView1.DataSource = tablaCarrera;
             GridView1.DataBind();
         }
 
+        public void CargarSede()
+        {
+            tablaProducto.Columns.Add("Codigo");
+            tablaProducto.Columns.Add("Sede");
+            StreamReader leer = new StreamReader(Server.MapPath("~/txt/Sede1.txt"));
+
+            while (!leer.EndOfStream)
+            {
+                string linea = leer.ReadLine();
+                string[] aux = linea.Split(',');
+
+                // Concatenar Código y Sede en una sola cadena para mostrarla en el DropDownList
+                string codigoYSede = "[" + aux[0] + "] " + aux[1];
+
+                tablaProducto.Rows.Add(aux[0], codigoYSede);
+            }
+
+            leer.Close();
+            DropDownListAddSedeCarrera.DataSource = tablaProducto;
+            DropDownListAddSedeCarrera.DataTextField = "Sede";
+            DropDownListAddSedeCarrera.DataValueField = "Codigo";
+            DropDownListAddSedeCarrera.DataBind();
+        }
         public void limpiar()
         {
             //txtAstr();
@@ -70,13 +99,16 @@ namespace pmLOGIN.pags
         protected void btnGUARDAR_Click(object sender, EventArgs e)
         {
             txtAstr();
+            string dropSedeCarrera = DropDownListAddSedeCarrera.SelectedValue;
 
             if ((txtCodigo != "") &&
-                (txtProducto != ""))
+                (txtProducto != "") &&
+                (dropSedeCarrera != "") )
             {
+
                 //rectificando si no hay codigos repetidos
                 bool codDuplicado = false;
-                foreach (DataRow fila in tablaProducto.Rows)
+                foreach (DataRow fila in tablaCarrera.Rows)
                 {
                     if (fila[0].ToString() == txtCodigo)
                     {
@@ -93,12 +125,12 @@ namespace pmLOGIN.pags
 
                 else
                 {
-                    tablaProducto.Rows.Add(txtCodigo, txtProducto);
+                    tablaCarrera.Rows.Add(txtCodigo, txtProducto, dropSedeCarrera);
                     //agrega los datos al grid
-                    //GridView1.DataBind();
+                    GridView1.DataBind();
 
                     //agregar datos al archivo txt
-                    string linea = txtCodigo + "," + txtProducto;
+                    string linea = txtCodigo + "," + txtProducto + "," + dropSedeCarrera;
                     StreamWriter escribir = new StreamWriter(Server.MapPath(rutaArchivo), true);
                     escribir.WriteLine(linea);
                     escribir.Close();
@@ -141,6 +173,7 @@ namespace pmLOGIN.pags
                         lineas[i] = txtCodigo + "," +
                             txtProducto;
                         prodEncontrado = true;
+                        GridView1.DataBind();
                         break;
                     }
                 }
@@ -187,6 +220,7 @@ namespace pmLOGIN.pags
                     else
                     {
                         nuevasLineas.Add(linea);
+
                     }
                 }
 
@@ -230,9 +264,11 @@ namespace pmLOGIN.pags
         {
             txtCodigo = TextBoxCodigo.Text;
             txtProducto = TextBoxProducto.Text;
+
         }
         protected void ButtonBuscar_Click(object sender, EventArgs e)
         {
+            CargarSede();
             bool encontrado = false;
             string filePath = Server.MapPath(rutaArchivo);
             if (File.Exists(filePath))
@@ -248,6 +284,7 @@ namespace pmLOGIN.pags
                     {
                         txtCodigo = campos[0];
                         txtProducto = campos[1];
+                        
 
                         encontrado = true;
                         break;
@@ -263,6 +300,8 @@ namespace pmLOGIN.pags
                     // muestra los datos correspondientes
                     TextBoxCodigo.Text = txtCodigo;
                     TextBoxProducto.Text = txtProducto;
+                    
+
                 }
                 else
                 {

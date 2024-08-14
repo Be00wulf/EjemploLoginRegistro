@@ -33,6 +33,15 @@ namespace pmLOGIN.pags
         protected global::System.Web.UI.WebControls.TextBox TextBoxProducto;
 
         /// <summary>
+        /// Control DropDownListAddSedeCarrera.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListAddSedeCarrera;
+
+        /// <summary>
         /// Control btnGUARDAR.
         /// </summary>
         /// <remarks>
