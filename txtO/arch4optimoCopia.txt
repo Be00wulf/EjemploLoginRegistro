@@ -1,2 +1,2 @@
 0,0,0,0
-2,[2] Retalhuleu,[1] LicenciaturaenCienciasJurídicasySocialesAbogadoyNotario,[1] Matutina
+1,[2] Retalhuleu,[1] Licenciatura en Ciencias Jurídicas y Sociales Abogado y Notario,[1] Matutina

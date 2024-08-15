@@ -111,44 +111,45 @@ namespace pmLOGIN.pags
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
-            DataTable dt = GetData();
-            DataView dv = dt.DefaultView;
+            string codigoBuscar = txtBuscarCodigo.Text.Trim(); // Suponiendo que este es el nuevo TextBox para ingresar el código a buscar
+            string rutaArchivoCodigo = Server.MapPath("~/txtO/arch4optimo.txt");
 
-            string filter = "";
+            if (!string.IsNullOrEmpty(codigoBuscar))
+            {
+                string[] lineas = File.ReadAllLines(rutaArchivoCodigo);
+                bool codigoEncontrado = false;
 
-            if (!string.IsNullOrEmpty(txtCodigo.Text))
-            {
-                filter += "CODIGO = " + txtCodigo.Text;
-            }
-            if (!string.IsNullOrEmpty(txtSede.Text))
-            {
-                if (filter.Length > 0) filter += " AND ";
-                filter += "SEDE = " + txtSede.Text;
-            }
-            if (!string.IsNullOrEmpty(txtCarrera.Text))
-            {
-                if (filter.Length > 0) filter += " AND ";
-                filter += "CARRERA = " + txtCarrera.Text;
-            }
-            if (!string.IsNullOrEmpty(txtJornada.Text))
-            {
-                if (filter.Length > 0) filter += " AND ";
-                filter += "JORNADA = " + txtJornada.Text;
-            }
+                foreach (string linea in lineas)
+                {
+                    string[] partes = linea.Split(',');
 
-            dv.RowFilter = filter;
+                    if (partes.Length > 0 && partes[0].Trim() == codigoBuscar)
+                    {
+                        // Coloca el código encontrado en txtCodigo
+                        txtCodigo.Text = partes[0].Trim();
 
-            if (dv.Count > 0)
-            {
-                GridView1.DataSource = dv;
-                GridView1.DataBind();
-                lblNoResults.Visible = false; // Oculta el mensaje si hay resultados
+                        // Aquí puedes agregar lógica adicional si deseas mostrar más información o realizar otras acciones
+                        codigoEncontrado = true;
+                        break;
+                    }
+                }
+
+                if (!codigoEncontrado)
+                {
+                    lblMensaje.Text = "El código no fue encontrado.";
+                    lblMensaje.ForeColor = System.Drawing.Color.Red;
+                    txtCodigo.Text = string.Empty; // Limpiar txtCodigo si no se encuentra
+                }
+                else
+                {
+                    lblMensaje.Text = "Código encontrado.";
+                    lblMensaje.ForeColor = System.Drawing.Color.Green;
+                }
             }
             else
             {
-                GridView1.DataSource = null;
-                GridView1.DataBind();
-                lblNoResults.Visible = true; // Muestra el mensaje si no hay resultados
+                lblMensaje.Text = "Por favor, ingrese un código para buscar.";
+                lblMensaje.ForeColor = System.Drawing.Color.Red;
             }
         }
 
@@ -214,17 +215,30 @@ namespace pmLOGIN.pags
             string rutaArchivoCodigo = Server.MapPath("~/txtO/arch4optimo.txt");
             string rutaArchivoCodigoT = Server.MapPath("~/txtO/arch4optimoCopia.txt");
 
-            // escribiendo las lineas en los arci=hivos
-            string nuevaLinea = $"{codigo},{sede},{carrera},{jornada}";
-            string nuevaLineaT = $"{codigo},{sedeT},{carreraT},{jornadaT}";
+            bool codigoExiste = VerificarExistenciaEnArchivo(codigo, rutaArchivoCodigo);
 
-            // Guardar el nuevo registro 
-            GuardarEnArchivo(nuevaLinea, rutaArchivoCodigo);
-            GuardarEnArchivo(nuevaLineaT, rutaArchivoCodigoT);
+            if (codigoExiste)
+            {
+                lblMensaje.Text = "El código ya existe. No se puede guardar un código duplicado.";
+                lblMensaje.ForeColor = System.Drawing.Color.Red;
+            }
+            else
+            {
+                // escribiendo las lineas en los arci=hivos
+                string nuevaLinea = $"{codigo},{sede},{carrera},{jornada}";
+                string nuevaLineaT = $"{codigo},{sedeT},{carreraT},{jornadaT}";
 
-            lblMensaje.Text = "Registro guardado con éxito.";
-            lblMensaje.ForeColor = System.Drawing.Color.Green;
-            CargarGridView();
+                // Guardar el nuevo registro 
+                GuardarEnArchivo(nuevaLinea, rutaArchivoCodigo);
+                GuardarEnArchivo(nuevaLineaT, rutaArchivoCodigoT);
+
+                lblMensaje.Text = "Registro guardado con éxito.";
+                lblMensaje.ForeColor = System.Drawing.Color.Green;
+                CargarGridView();
+                LoadGridView();
+            }
+
+            
         }
 
         //2DO GRID
@@ -290,9 +304,10 @@ namespace pmLOGIN.pags
         protected void ButtonRefrescar_Click(object sender, EventArgs e)
         {
             txtCodigo.Text = string.Empty;
-            txtSede.Text = string.Empty;
-            txtCarrera.Text = string.Empty;
-            txtJornada.Text = string.Empty;
+            txtBuscarCodigo.Text = string.Empty;
+            CargarSede();
+            CargarCarrera();
+            CargarPlan();
 
             // Limpiar el mensaje
             lblMensaje.Text = string.Empty;
@@ -303,12 +318,13 @@ namespace pmLOGIN.pags
         protected void ButtonEliminar_Click(object sender, EventArgs e)
         {
             string codigoEliminar = txtCodigo.Text.Trim();
-            string rutaArchivo = Server.MapPath("~/txtO/arch4optimo.txt");
+            string rutaArchivo = Server.MapPath("~/txtO/arch4optimoCopia.txt");
 
             if (EliminarRegistro(codigoEliminar, rutaArchivo))
             {
                 lblMensaje.Text = "Registro eliminado con éxito.";
                 lblMensaje.ForeColor = System.Drawing.Color.Green;
+                LoadGridView();
             }
             else
             {

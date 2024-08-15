@@ -7,12 +7,12 @@
     <div class="info">
         <table class="custom-table">
             <tr>
-                <td class="alinJustify">Código:</td>
+                <td class="alinJustify">[Código]:</td>
                 <td>
-                    <asp:TextBox ID="txtCodigo" runat="server" type="number"  CssClass="estilotxtBox"></asp:TextBox></td>
+                    <asp:TextBox ID="txtCodigo" runat="server" type="number" placeholder="Ej: 12" CssClass="estilotxtBox"></asp:TextBox></td>
             </tr>
             <tr>
-                <td class="alinJustify">Sede:</td>
+                <td class="alinJustify">[Sede]:</td>
                 <td>
                 <asp:DropDownList ID="DropDownListAddSede" class="dropstilo" runat="server" AutoPostBack="true">
                 </asp:DropDownList>
@@ -20,7 +20,7 @@
                     <asp:TextBox ID="txtSede" runat="server" type="number"  CssClass="estilotxtBox" Visible="False"></asp:TextBox></td>
             </tr>
             <tr>
-                <td class="alinJustify">Carrera:</td>
+                <td class="alinJustify">[Carrera]:</td>
                 <td>
                 <asp:DropDownList ID="DropDownListAddCarrera" class="dropstilo" runat="server" AutoPostBack="true">
                 </asp:DropDownList>
@@ -28,7 +28,7 @@
                     <asp:TextBox ID="txtCarrera" runat="server" type="number"  CssClass="estilotxtBox" Visible="False"></asp:TextBox></td>
             </tr>
             <tr>
-                <td class="alinJustify">Jornada:</td>
+                <td class="alinJustify">[Jornada]:</td>
                 <td>
                 <asp:DropDownList ID="DropDownListAddPlan" class="dropstilo" runat="server" AutoPostBack="true">
                 </asp:DropDownList>
@@ -37,8 +37,13 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <asp:Button ID="btnBuscar" runat="server" Text="AplicarFiltros" OnClick="btnBuscar_Click" CssClass="btn-primary" Visible="False" />
-                &nbsp;<br />
+                    <br />
+                    <asp:Button ID="btnBuscar" runat="server" Text="Buscar [Código]" OnClick="btnBuscar_Click" CssClass="btn-primary" />
+                &nbsp;
+                    <asp:TextBox ID="txtBuscarCodigo" runat="server" type="number" placeholder="Ej: 12" CssClass="estilotxtBox"></asp:TextBox><br />
+        <asp:Label ID="lblNoResults" runat="server" Text="No se encontraron resultados." ForeColor="Red" Visible="false"></asp:Label>
+
+                    <br />
                     <asp:Label ID="lblMensaje" runat="server" ForeColor="Red" Font-Bold="True"></asp:Label>
                     <br />
                     <asp:Label ID="Label1" runat="server" />
@@ -55,7 +60,6 @@
         <h4>AGREGAR INFORMACION UNIVERSITARIA</h4>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="True" Visible="False">
         </asp:GridView>
-        <asp:Label ID="lblNoResults" runat="server" Text="No se encontraron resultados." ForeColor="Red" Visible="false"></asp:Label>
 
         <%--<h4>AGREGAR INFORMACION UNIVERSITARIA</h4>--%>
         <asp:GridView ID="GridViewDetalles" runat="server" AutoGenerateColumns="True">
