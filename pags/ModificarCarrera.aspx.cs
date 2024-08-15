@@ -17,8 +17,8 @@ namespace pmLOGIN.pags
         private string txtProducto;
         private bool btnEditF, btnEditT;
         private bool btnElimF, btnElimT;
-        string rutaArchivo = "~/txt/Carrera.txt";      //cambiar a txt carrera
-        //
+        //string rutaArchivo = "~/txt/Carrera.txt";      //cambiar a txt carrera
+        string rutaArchivo = "~/txtO/archCarrera.txt";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -32,12 +32,12 @@ namespace pmLOGIN.pags
             tablaCarrera.Columns.Add("DATO");
 
             //?
-            tablaCarrera.Columns.Add("CODIGO_SEDE");
+            //tablaCarrera.Columns.Add("CODIGO_SEDE");
 
             if (!IsPostBack)
             {
                 btnOff();
-                CargarSede();
+                //CargarSede();
             }
             else
             {
@@ -102,8 +102,8 @@ namespace pmLOGIN.pags
             string dropSedeCarrera = DropDownListAddSedeCarrera.SelectedValue;
 
             if ((txtCodigo != "") &&
-                (txtProducto != "") &&
-                (dropSedeCarrera != "") )
+                (txtProducto != "") /*&&
+                (dropSedeCarrera != "")*/ )
             {
 
                 //rectificando si no hay codigos repetidos
@@ -125,12 +125,12 @@ namespace pmLOGIN.pags
 
                 else
                 {
-                    tablaCarrera.Rows.Add(txtCodigo, txtProducto, dropSedeCarrera);
+                    tablaCarrera.Rows.Add(txtCodigo, txtProducto/*, dropSedeCarrera*/);
                     //agrega los datos al grid
                     GridView1.DataBind();
 
                     //agregar datos al archivo txt
-                    string linea = txtCodigo + "," + txtProducto + "," + dropSedeCarrera;
+                    string linea = txtCodigo + "," + txtProducto /*+ "," + dropSedeCarrera*/;
                     StreamWriter escribir = new StreamWriter(Server.MapPath(rutaArchivo), true);
                     escribir.WriteLine(linea);
                     escribir.Close();
@@ -147,9 +147,12 @@ namespace pmLOGIN.pags
 
         protected void btnEDITAR_Click(object sender, EventArgs e)
         {
+            string dropSedeCarrera = DropDownListAddSedeCarrera.SelectedValue;
             if (
                 (txtCodigo == "") ||
-                (txtProducto == ""))
+                (txtProducto == "")
+                /*(dropSedeCarrera == "")*/
+                )
             {
                 Response.Write("<script language=javascript>alert('Todos los campos deben estar llenos')</script>");
                 return; // Salir del método si algún campo está vacío
@@ -171,7 +174,8 @@ namespace pmLOGIN.pags
                     {
                         // Actualizar los campos en la línea
                         lineas[i] = txtCodigo + "," +
-                            txtProducto;
+                            txtProducto /*+ "," +
+                            dropSedeCarrera*/;
                         prodEncontrado = true;
                         GridView1.DataBind();
                         break;

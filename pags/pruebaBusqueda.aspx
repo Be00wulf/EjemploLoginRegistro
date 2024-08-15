@@ -14,20 +14,30 @@
             <tr>
                 <td class="alinJustify">Sede:</td>
                 <td>
-                    <asp:TextBox ID="txtSede" runat="server" type="number"  CssClass="estilotxtBox"></asp:TextBox></td>
+                <asp:DropDownList ID="DropDownListAddSede" class="dropstilo" runat="server" AutoPostBack="true">
+                </asp:DropDownList>
+                        <br />
+                    <asp:TextBox ID="txtSede" runat="server" type="number"  CssClass="estilotxtBox" Visible="False"></asp:TextBox></td>
             </tr>
             <tr>
                 <td class="alinJustify">Carrera:</td>
                 <td>
-                    <asp:TextBox ID="txtCarrera" runat="server" type="number"  CssClass="estilotxtBox"></asp:TextBox></td>
+                <asp:DropDownList ID="DropDownListAddCarrera" class="dropstilo" runat="server" AutoPostBack="true">
+                </asp:DropDownList>
+                        <br />
+                    <asp:TextBox ID="txtCarrera" runat="server" type="number"  CssClass="estilotxtBox" Visible="False"></asp:TextBox></td>
             </tr>
             <tr>
                 <td class="alinJustify">Jornada:</td>
                 <td>
-                    <asp:TextBox ID="txtJornada" runat="server" type="number"  CssClass="estilotxtBox"></asp:TextBox></td>
+                <asp:DropDownList ID="DropDownListAddPlan" class="dropstilo" runat="server" AutoPostBack="true">
+                </asp:DropDownList>
+                        <br />
+                    <asp:TextBox ID="txtJornada" runat="server" type="number"  CssClass="estilotxtBox" Visible="False"></asp:TextBox></td>
             </tr>
             <tr>
                 <td colspan="2">
+                    <br />
                     <asp:Button ID="btnBuscar" runat="server" Text="AplicarFiltros" OnClick="btnBuscar_Click" CssClass="btn-primary" />
                 &nbsp;<br />
                     <asp:Label ID="lblMensaje" runat="server" ForeColor="Red" Font-Bold="True"></asp:Label>
@@ -42,7 +52,8 @@
         </table>
 
 
-        <h2>Resultados</h2>
+        <h4>&nbsp;</h4>
+        <h4>AGREGAR INFORMACION UNIVERSITARIA</h4>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="True">
         </asp:GridView>
         <asp:Label ID="lblNoResults" runat="server" Text="No se encontraron resultados." ForeColor="Red" Visible="false"></asp:Label>

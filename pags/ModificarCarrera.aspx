@@ -24,9 +24,9 @@
                     </tr>
 
                     <tr>
-                        <td class="auto-style2">[CODIGO] SEDE: </td>
+                        <td class="auto-style2">SITIO PARA AÑADIR CARRERAS </td>
                         <td class="auto-style4">
-                <asp:DropDownList ID="DropDownListAddSedeCarrera" class="dropstilo" runat="server" AutoPostBack="true">
+                <asp:DropDownList ID="DropDownListAddSedeCarrera" class="dropstilo" runat="server" AutoPostBack="true" Visible="False">
                 </asp:DropDownList>
                         </td>
                     </tr>

@@ -16,7 +16,6 @@ namespace pmLOGIN.pags
         private string txtProducto;
         private bool btnEditF, btnEditT;
         private bool btnElimF, btnElimT;
-        //string rutaArchivo = "~/txtO/archSede.txt";
         string rutaArchivo = "~/txt/Sede1.txt";
 
         protected void Page_Load(object sender, EventArgs e)

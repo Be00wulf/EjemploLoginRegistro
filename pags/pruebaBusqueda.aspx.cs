@@ -11,18 +11,102 @@ namespace pmLOGIN.pags
 {
     public partial class pruebaBusqueda : System.Web.UI.Page
     {
+        DataTable tablaProducto = new DataTable();
+        DataTable tablaCarrera = new DataTable();
+        DataTable tablaPlan = new DataTable();
+
+        string rutaArchivo_Sede = "~/txtO/archSede.txt";
+        string rutaArchivo_Carrera = "~/txtO/archCarrera.txt";
+        string rutaArchivo_Plan= "~/txtO/archPlan.txt";
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if (Session["Username"] == null)
-            {
-                Response.Redirect("Login.aspx");
-            }
+            //if (Session["Username"] == null)
+            //{
+            //    Response.Redirect("Login.aspx");
+            //}
 
             if (!IsPostBack)
             {
                 LoadGridView();
+                CargarSede();
+                CargarCarrera();
+                CargarPlan();
+
             }
+        }
+
+        public void CargarPlan()
+        {
+            tablaPlan.Columns.Add("Codigo");
+            tablaPlan.Columns.Add("Plan");
+            StreamReader leer = new StreamReader(Server.MapPath(rutaArchivo_Plan));
+
+            while (!leer.EndOfStream)
+            {
+                string linea = leer.ReadLine();
+                string[] aux = linea.Split(',');
+
+                // Concatenar Código y Sede en una sola cadena para mostrarla en el DropDownList
+                string codigoYplan = "[" + aux[0] + "] " + aux[1];
+
+                tablaPlan.Rows.Add(aux[0], codigoYplan);
+            }
+
+            leer.Close();
+            DropDownListAddPlan.DataSource = tablaPlan;
+            DropDownListAddPlan.DataTextField = "Plan";
+            DropDownListAddPlan.DataValueField = "Codigo";
+            DropDownListAddPlan.DataBind();
+        }
+
+        public void CargarCarrera()
+        {
+            tablaCarrera.Columns.Add("Codigo");
+            tablaCarrera.Columns.Add("Carrera");
+            StreamReader leer = new StreamReader(Server.MapPath(rutaArchivo_Carrera));
+
+            while (!leer.EndOfStream)
+            {
+                string linea = leer.ReadLine();
+                string[] aux = linea.Split(',');
+
+                // Concatenar Código y Sede en una sola cadena para mostrarla en el DropDownList
+                string codigoYcarrera = "[" + aux[0] + "] " + aux[1];
+
+                tablaCarrera.Rows.Add(aux[0], codigoYcarrera);
+            }
+
+            leer.Close();
+            DropDownListAddCarrera.DataSource = tablaCarrera;
+            DropDownListAddCarrera.DataTextField = "Carrera";
+            DropDownListAddCarrera.DataValueField = "Codigo";
+            DropDownListAddCarrera.DataBind();
+        }
+
+        public void CargarSede()
+        {
+            tablaProducto.Columns.Add("Codigo");
+            tablaProducto.Columns.Add("Sede");
+            StreamReader leer = new StreamReader(Server.MapPath(rutaArchivo_Sede));
+
+            while (!leer.EndOfStream)
+            {
+                string linea = leer.ReadLine();
+                string[] aux = linea.Split(',');
+
+                // Concatenar Código y Sede en una sola cadena para mostrarla en el DropDownList
+                string codigoYSede = "[" + aux[0] + "] " + aux[1];
+
+                tablaProducto.Rows.Add(aux[0], codigoYSede);
+            }
+
+            leer.Close();
+            DropDownListAddSede.DataSource = tablaProducto;
+            DropDownListAddSede.DataTextField = "Sede";
+            DropDownListAddSede.DataValueField = "Codigo";
+            DropDownListAddSede.DataBind();
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)
