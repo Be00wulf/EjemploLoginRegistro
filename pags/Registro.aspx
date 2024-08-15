@@ -82,14 +82,14 @@
             </td>
             <td>
                 <br />
-                <asp:DropDownList ID="DropDownListPais" class="dropstilo" runat="server" OnFocus="loadDropDownListData();" AutoPostBack="true" OnSelectedIndexChanged="DropDownListPais_SelectedIndexChanged"></asp:DropDownList>
+                <asp:DropDownList ID="DropDownListPais" class="dropstilo" runat="server" OnFocus="loadDropDownListData();" AutoPostBack="true"></asp:DropDownList>
                 <br />
             </td>
         </tr>
 
         <tr>
             <td>
-                <asp:DropDownList ID="DropDownListGenero" runat="server" class="dropstilo" AutoPostBack="true" OnSelectedIndexChanged="DropDownListGenero_SelectedIndexChanged">
+                <asp:DropDownList ID="DropDownListGenero" runat="server" class="dropstilo" AutoPostBack="true" >
                 </asp:DropDownList>
                 <br />
             </td>

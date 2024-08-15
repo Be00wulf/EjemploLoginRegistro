@@ -41,7 +41,7 @@
                     <asp:Button ID="btnBuscar" runat="server" Text="Buscar [Código]" OnClick="btnBuscar_Click" CssClass="btn-primary" />
                 &nbsp;
                     <asp:TextBox ID="txtBuscarCodigo" runat="server" type="number" placeholder="Ej: 12" CssClass="estilotxtBox"></asp:TextBox><br />
-        <asp:Label ID="lblNoResults" runat="server" Text="No se encontraron resultados." ForeColor="Red" Visible="false"></asp:Label>
+                    <asp:Label ID="lblNoResults" runat="server" Text="No se encontraron resultados." ForeColor="Red" Visible="false"></asp:Label>
 
                     <br />
                     <asp:Label ID="lblMensaje" runat="server" ForeColor="Red" Font-Bold="True"></asp:Label>

@@ -209,7 +209,7 @@
     <Content Include="txt\CarreraOpt.txt" />
     <Content Include="txt\EstadoCivilF.txt" />
     <Content Include="txt\GeneroM.txt" />
-    <Content Include="txt\Inscripciones2.txt" />
+    <Content Include="txt\Inscripciones3.txt" />
     <Content Include="txt\Municipio.txt" />
     <Content Include="txt\PaisesLatinoamericanos.txt" />
     <Content Include="txt\Departamento.txt" />

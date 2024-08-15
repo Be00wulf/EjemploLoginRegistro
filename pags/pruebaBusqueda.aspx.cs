@@ -22,10 +22,10 @@ namespace pmLOGIN.pags
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            //if (Session["Username"] == null)
-            //{
-            //    Response.Redirect("Login.aspx");
-            //}
+            if (Session["Username"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
 
             if (!IsPostBack)
             {
@@ -111,7 +111,7 @@ namespace pmLOGIN.pags
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
-            string codigoBuscar = txtBuscarCodigo.Text.Trim(); // Suponiendo que este es el nuevo TextBox para ingresar el código a buscar
+            string codigoBuscar = txtBuscarCodigo.Text.Trim();
             string rutaArchivoCodigo = Server.MapPath("~/txtO/arch4optimo.txt");
 
             if (!string.IsNullOrEmpty(codigoBuscar))
@@ -128,7 +128,6 @@ namespace pmLOGIN.pags
                         // Coloca el código encontrado en txtCodigo
                         txtCodigo.Text = partes[0].Trim();
 
-                        // Aquí puedes agregar lógica adicional si deseas mostrar más información o realizar otras acciones
                         codigoEncontrado = true;
                         break;
                     }
@@ -138,7 +137,7 @@ namespace pmLOGIN.pags
                 {
                     lblMensaje.Text = "El código no fue encontrado.";
                     lblMensaje.ForeColor = System.Drawing.Color.Red;
-                    txtCodigo.Text = string.Empty; // Limpiar txtCodigo si no se encuentra
+                    txtCodigo.Text = string.Empty; 
                 }
                 else
                 {
@@ -273,7 +272,7 @@ namespace pmLOGIN.pags
             GridViewDetalles.DataBind();
         }
 
-        // Método para verificar la existencia de un valor en la primera posición de cada línea del archivo
+        // verificar la existencia de un valor en la primera posición de cada línea del archivo
         private bool VerificarExistenciaEnArchivo(string valor, string rutaArchivo)
         {
             if (File.Exists(rutaArchivo))
@@ -291,7 +290,7 @@ namespace pmLOGIN.pags
             return false;
         }
 
-        // Método para guardar una nueva línea en el archivo arch4optimo.txt
+        //guardar una nueva línea en el archivo arch4optimo.txt
         private void GuardarEnArchivo(string nuevaLinea, string rutaArchivo)
         {
             // Abrir el archivo para añadir el nuevo valor
@@ -335,11 +334,9 @@ namespace pmLOGIN.pags
 
         private bool EliminarRegistro(string codigo, string rutaArchivo)
         {
-            // Leer todas las líneas del archivo
             string[] lineas = File.ReadAllLines(rutaArchivo);
             bool encontrado = false;
 
-            // Crear una lista para almacenar las líneas que no deben ser eliminadas
             List<string> nuevasLineas = new List<string>();
 
             foreach (string linea in lineas)

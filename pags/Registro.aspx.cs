@@ -78,8 +78,8 @@ namespace pmLOGIN.pags
             tablaCarrera.Columns.Add("Carrera");
             tablaCarrera.Columns.Add("CodSede");
 
-            //StreamReader leer2 = new StreamReader(Server.MapPath("~/txt/Carrera.txt"));
-            StreamReader leer2 = new StreamReader(Server.MapPath("~/txtO/archCarrera.txt"));
+            StreamReader leer2 = new StreamReader(Server.MapPath("~/txt/Carrera.txt"));
+            //StreamReader leer2 = new StreamReader(Server.MapPath("~/txtO/archCarrera.txt"));
 
             while (!leer2.EndOfStream)
             {
@@ -330,6 +330,18 @@ namespace pmLOGIN.pags
                 }
 
                 Response.Write("<script language=javascript>alert('Se ha ingresado el cliente exitosamente')</script>");
+
+                Session["PaisSeleccionado"] = DropDownListPais.SelectedValue;
+                Session["GeneroSeleccionado"] = DropDownListGenero.SelectedValue;
+                Session["EstadoCivilSeleccionado"] = DropDownListEstadoCivil.SelectedValue;
+                Session["DeptoSeleccionado"] = DropDownListDepto.SelectedValue;
+                Session["MunicipioSeleccionado"] = DropDownListMunicipio.SelectedValue;
+                Session["SedeSeleccionado"] = DropDownListSede.SelectedValue;
+                Session["CarreraSeleccionado"] = DropDownListCarrera.SelectedValue;
+                Session["PlanSeleccionado"] = DropDownListPlan.SelectedValue;
+
+                // Redirigir a la página de DatosRegistrados
+                //Response.Redirect("DatosRegistrados.aspx");
             }
 
             else
