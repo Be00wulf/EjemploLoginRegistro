@@ -161,7 +161,7 @@ namespace pmLOGIN.pags
             dt.Columns.Add("CARRERA");
             dt.Columns.Add("JORNADA");
 
-            string filePath = Server.MapPath("~/txtO/arch4optimo.txt");
+            string filePath = Server.MapPath("~/txtO/arch4optimoCopia.txt");
 
             try
             {
@@ -192,60 +192,71 @@ namespace pmLOGIN.pags
 
         private void LoadGridView()
         {
-            GridView1.DataSource = GetData();
-            GridView1.DataBind();
+            //GridView1.DataSource = GetData();
+            //GridView1.DataBind();
+
+            GridViewDetalles.DataSource = GetData();
+            GridViewDetalles.DataBind();
         }
 
         protected void ButtonGuardar_Click(object sender, EventArgs e)
         {
             string codigo = txtCodigo.Text.Trim();
-            string sede = txtSede.Text.Trim();
-            string carrera = txtCarrera.Text.Trim();
-            string jornada = txtJornada.Text.Trim();
+
+            string sede = DropDownListAddSede.SelectedValue;
+            string carrera = DropDownListAddCarrera.SelectedValue;
+            string jornada = DropDownListAddPlan.SelectedValue;
+
+            string sedeT = DropDownListAddSede.SelectedItem.Text;
+            string carreraT = DropDownListAddCarrera.SelectedItem.Text;
+            string jornadaT = DropDownListAddPlan.SelectedItem.Text;
 
             string rutaArchivoCodigo = Server.MapPath("~/txtO/arch4optimo.txt");
-            string rutaArchivoSede = Server.MapPath("~/txtO/archSede.txt");
-            string rutaArchivoCarrera = Server.MapPath("~/txtO/archCarrera.txt");
-            string rutaArchivoJornada = Server.MapPath("~/txtO/archPlan.txt");
+            string rutaArchivoCodigoT = Server.MapPath("~/txtO/arch4optimoCopia.txt");
 
-            // Verificar existencia en los archivos respectivos
-            bool codigoExiste = VerificarExistenciaEnArchivo(codigo, rutaArchivoCodigo);
-            bool sedeExiste = VerificarExistenciaEnArchivo(sede, rutaArchivoSede);
-            bool carreraExiste = VerificarExistenciaEnArchivo(carrera, rutaArchivoCarrera);
-            bool jornadaExiste = VerificarExistenciaEnArchivo(jornada, rutaArchivoJornada);
+            // escribiendo las lineas en los arci=hivos
+            string nuevaLinea = $"{codigo},{sede},{carrera},{jornada}";
+            string nuevaLineaT = $"{codigo},{sedeT},{carreraT},{jornadaT}";
 
-            // Validaciones y mensajes
-            if (codigoExiste)
-            {
-                lblMensaje.Text = "El código ya existe.";
-                lblMensaje.ForeColor = System.Drawing.Color.Red;
-            }
-            else if (!sedeExiste)
-            {
-                lblMensaje.Text = "La sede no ha sido registrada.";
-                lblMensaje.ForeColor = System.Drawing.Color.Red;
-            }
-            else if (!carreraExiste)
-            {
-                lblMensaje.Text = "La carrera no ha sido registrada.";
-                lblMensaje.ForeColor = System.Drawing.Color.Red;
-            }
-            else if (!jornadaExiste)
-            {
-                lblMensaje.Text = "La jornada no ha sido registrada.";
-                lblMensaje.ForeColor = System.Drawing.Color.Red;
-            }
-            else
-            {
-                // Construir la línea en el formato requerido para arch4optimo.txt
-                string nuevaLinea = $"{codigo},{sede},{carrera},{jornada}";
+            // Guardar el nuevo registro 
+            GuardarEnArchivo(nuevaLinea, rutaArchivoCodigo);
+            GuardarEnArchivo(nuevaLineaT, rutaArchivoCodigoT);
 
-                // Guardar el nuevo registro en el archivo arch4optimo.txt
-                GuardarEnArchivo(nuevaLinea, rutaArchivoCodigo);
+            lblMensaje.Text = "Registro guardado con éxito.";
+            lblMensaje.ForeColor = System.Drawing.Color.Green;
+            CargarGridView();
+        }
 
-                lblMensaje.Text = "Registro guardado con éxito.";
-                lblMensaje.ForeColor = System.Drawing.Color.Green;
+        //2DO GRID
+        private void CargarGridView()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Código");
+            dt.Columns.Add("Sede");
+            dt.Columns.Add("Carrera");
+            dt.Columns.Add("Jornada");
+
+            string rutaArchivoCodigo = Server.MapPath("~/txtO/arch4optimoCopia.txt");
+
+            if (File.Exists(rutaArchivoCodigo))
+            {
+                string[] lineas = File.ReadAllLines(rutaArchivoCodigo);
+                foreach (string linea in lineas)
+                {
+                    string[] campos = linea.Split(',');
+                    if (campos.Length == 4)
+                    {
+                        DataRow dr = dt.NewRow();
+                        dr["Código"] = campos[0];
+                        dr["Sede"] = campos[1];
+                        dr["Carrera"] = campos[2];
+                        dr["Jornada"] = campos[3];
+                    }
+                }
             }
+
+            GridViewDetalles.DataSource = dt;
+            GridViewDetalles.DataBind();
         }
 
         // Método para verificar la existencia de un valor en la primera posición de cada línea del archivo
@@ -272,7 +283,7 @@ namespace pmLOGIN.pags
             // Abrir el archivo para añadir el nuevo valor
             using (StreamWriter sw = new StreamWriter(rutaArchivo, true))
             {
-                sw.WriteLine(nuevaLinea);
+                sw.WriteLine(nuevaLinea); 
             }
         }
 
@@ -288,10 +299,6 @@ namespace pmLOGIN.pags
             lblNoResults.Text = string.Empty;
             LoadGridView();
         }
-
-
-
-
 
         protected void ButtonEliminar_Click(object sender, EventArgs e)
         {

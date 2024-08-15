@@ -200,6 +200,7 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="txtO\arch4optimoCopia.txt" />
     <Content Include="txtO\arch4optimo.txt" />
     <Content Include="txtO\archCarrera.txt" />
     <Content Include="txtO\archPlan.txt" />

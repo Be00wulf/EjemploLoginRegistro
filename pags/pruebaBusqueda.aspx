@@ -37,8 +37,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <br />
-                    <asp:Button ID="btnBuscar" runat="server" Text="AplicarFiltros" OnClick="btnBuscar_Click" CssClass="btn-primary" />
+                    <asp:Button ID="btnBuscar" runat="server" Text="AplicarFiltros" OnClick="btnBuscar_Click" CssClass="btn-primary" Visible="False" />
                 &nbsp;<br />
                     <asp:Label ID="lblMensaje" runat="server" ForeColor="Red" Font-Bold="True"></asp:Label>
                     <br />
@@ -54,9 +53,13 @@
 
         <h4>&nbsp;</h4>
         <h4>AGREGAR INFORMACION UNIVERSITARIA</h4>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="True">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="True" Visible="False">
         </asp:GridView>
         <asp:Label ID="lblNoResults" runat="server" Text="No se encontraron resultados." ForeColor="Red" Visible="false"></asp:Label>
+
+        <%--<h4>AGREGAR INFORMACION UNIVERSITARIA</h4>--%>
+        <asp:GridView ID="GridViewDetalles" runat="server" AutoGenerateColumns="True">
+        </asp:GridView>
 
     </div>
 </asp:Content>
