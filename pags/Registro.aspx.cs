@@ -28,78 +28,17 @@ namespace pmLOGIN.pags
                 CargarPais();
                 CargarGenero();
                 CargarDepartamento();
-                CargarSede();
-
                 CargarEstadoCivil();
                 CargarMunicipio();
-                CargarCarrera();
-                CargarPlan();
+                CargarSede();
             }
         }
 
-        //SEDE - CARRERA Y PLAN, ENLAZADOS
-        public void CargarPlan()
-        {
-            //..el primer valor de carrera esta ligado al terceer valor del plan
-            tablaPlan.Columns.Clear();
-            tablaPlan.Rows.Clear();
-            tablaPlan.Columns.Add("CodPlan");
-            tablaPlan.Columns.Add("Plan");
-            tablaPlan.Columns.Add("CodCarrera");
-            //tablaPlan.Columns.Add("CodCarreraPlan");
-
-            StreamReader leer2 = new StreamReader(Server.MapPath("~/txt/Plan.txt"));
-            //StreamReader leer2 = new StreamReader(Server.MapPath("~/txt/PlanOpt.txt"));
-            //StreamReader leerCarrera = new StreamReader(Server.MapPath("~/txt/CarreraOpt.txt"));
-
-            while (!leer2.EndOfStream)
-            {
-                string linea = leer2.ReadLine();
-                string[] aux = linea.Split(',');
-                if (DropDownListCarrera.SelectedValue == aux[2])      //ojo  enlazado al condicional
-                //if (DropDownListCarrera.SelectedValue == aux[3])      //ojo  enlazado al condicional
-                {
-                    tablaPlan.Rows.Add(aux);
-                }
-            }
-
-            leer2.Close();
-            DropDownListPlan.DataSource = tablaPlan;
-            DropDownListPlan.DataTextField = "Plan";
-            DropDownListPlan.DataValueField = "CodPlan";
-            DropDownListPlan.DataBind();
-        }
-
-        public void CargarCarrera()
-        {
-            tablaCarrera.Columns.Clear();
-            tablaCarrera.Rows.Clear();
-            tablaCarrera.Columns.Add("CodCarrera");
-            tablaCarrera.Columns.Add("Carrera");
-            tablaCarrera.Columns.Add("CodSede");
-
-            StreamReader leer2 = new StreamReader(Server.MapPath("~/txt/Carrera.txt"));
-            //StreamReader leer2 = new StreamReader(Server.MapPath("~/txtO/archCarrera.txt"));
-
-            while (!leer2.EndOfStream)
-            {
-                string linea = leer2.ReadLine();
-                string[] aux = linea.Split(',');
-                if (DropDownListSede.SelectedValue == aux[2])      //ojo  enlazado al condicional
-                {
-                    tablaCarrera.Rows.Add(aux);
-                }
-            }
-
-            leer2.Close();
-            DropDownListCarrera.DataSource = tablaCarrera;
-            DropDownListCarrera.DataTextField = "Carrera";
-            DropDownListCarrera.DataValueField = "CodCarrera";
-            DropDownListCarrera.DataBind();
-        }
-
+        // /SEDE - CARRERA Y PLAN, ENLAZADOS 
         public void CargarSede()
         {
+            tablaSede.Columns.Clear();
+            tablaSede.Rows.Clear();
             tablaSede.Columns.Add("Codigo");
             tablaSede.Columns.Add("Sede");
             StreamReader leer = new StreamReader(Server.MapPath("~/txt/Sede1.txt"));
@@ -116,6 +55,80 @@ namespace pmLOGIN.pags
             DropDownListSede.DataTextField = "Sede";
             DropDownListSede.DataValueField = "Codigo";
             DropDownListSede.DataBind();
+        }
+
+        // Método para cargar las carreras basadas en la sede seleccionada
+        public void CargarCarreraPlanSegunSede()
+        {
+            string codigoSedeSeleccionada = DropDownListSede.SelectedValue;
+
+            StreamReader leerOptimo = new StreamReader(Server.MapPath("~/txtO/arch4optimo.txt"));
+            List<string> codigosCarrera = new List<string>();
+
+            while (!leerOptimo.EndOfStream)
+            {
+                string linea = leerOptimo.ReadLine();
+                string[] aux = linea.Split(',');
+
+                if (aux[1] == codigoSedeSeleccionada)
+                {
+                    codigosCarrera.Add(aux[2]);
+                }
+            }
+            leerOptimo.Close();
+
+            //carreras que correspondan a los códigos obtenidos
+            tablaCarrera.Columns.Clear();
+            tablaCarrera.Rows.Clear();
+            tablaCarrera.Columns.Add("CodCarrera");
+            tablaCarrera.Columns.Add("Carrera");
+            tablaCarrera.Columns.Add("CodSede");
+
+            StreamReader leerCarrera = new StreamReader(Server.MapPath("~/txtO/archCarrera.txt"));
+
+            while (!leerCarrera.EndOfStream)
+            {
+                string linea = leerCarrera.ReadLine();
+                string[] aux = linea.Split(',');
+
+                if (codigosCarrera.Contains(aux[0]))
+                {
+                    tablaCarrera.Rows.Add(aux);
+                }
+            }
+            leerCarrera.Close();
+
+            DropDownListCarrera.DataSource = tablaCarrera;
+            DropDownListCarrera.DataTextField = "Carrera";
+            DropDownListCarrera.DataValueField = "CodCarrera";
+            DropDownListCarrera.DataBind();
+
+
+            //jornadas que corresponden a los codigos obtenidos
+            tablaPlan.Columns.Clear();
+            tablaPlan.Rows.Clear();
+            tablaPlan.Columns.Add("CodPlan");
+            tablaPlan.Columns.Add("Plan");
+            tablaPlan.Columns.Add("CodCarrera");
+
+            StreamReader leerPlan = new StreamReader(Server.MapPath("~/txtO/archPlan.txt"));
+
+            while (!leerPlan.EndOfStream)
+            {
+                string linea = leerPlan.ReadLine();
+                string[] aux = linea.Split(',');
+
+                if (codigosCarrera.Contains(aux[0]))
+                {
+                    tablaPlan.Rows.Add(aux);
+                }
+            }
+            leerCarrera.Close();
+
+            DropDownListPlan.DataSource = tablaPlan;
+            DropDownListPlan.DataTextField = "Plan";
+            DropDownListPlan.DataValueField = "CodPlan";
+            DropDownListPlan.DataBind();
         }
 
         //MUNICIPIO Y DEPARTAMENTO ENLAZADOS
@@ -234,11 +247,6 @@ namespace pmLOGIN.pags
             DropDownListPais.DataBind();
         }
 
-        protected void DropDownListPais_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         protected void ButtonGenerarForm_Click(object sender, EventArgs e)
         {
             string nombre1 = TextBoxName1.Text;
@@ -296,7 +304,7 @@ namespace pmLOGIN.pags
                 institucion != "")
                 )
             {
-                //agregando la linea con los nuevos datos
+                //agregando y guardando la linea con los nuevos datos
                 string linea = $"{nombre1}," +
                     $"{nombre2}," +
                     $"{nombreN}," +
@@ -322,7 +330,6 @@ namespace pmLOGIN.pags
                     $"{tituloFecha}," +
                     $"{institucion}";
 
-                // Guardar en el archivo de texto
                 string path = Server.MapPath("~/txt/Inscripciones2.txt");
                 using (StreamWriter escribir = new StreamWriter(path, true))
                 {
@@ -339,9 +346,6 @@ namespace pmLOGIN.pags
                 Session["SedeSeleccionado"] = DropDownListSede.SelectedValue;
                 Session["CarreraSeleccionado"] = DropDownListCarrera.SelectedValue;
                 Session["PlanSeleccionado"] = DropDownListPlan.SelectedValue;
-
-                // Redirigir a la página de DatosRegistrados
-                //Response.Redirect("DatosRegistrados.aspx");
             }
 
             else
@@ -363,18 +367,8 @@ namespace pmLOGIN.pags
 
         protected void DropDownListSede_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CargarCarrera();
-        }
-
-        protected void DropDownListCarrera_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            CargarPlan();
-
-            if (DropDownListPlan.Items.Count == 0)  //==1
-            {
-                // Establece el texto del TextBox con el primer elemento del DropDownList
-                DropDownListPlan.SelectedValue = DropDownListPlan.Items[0].Text;                //OJO REVISAR
-            }
+            //CargarCarrera();
+            CargarCarreraPlanSegunSede();
         }
     }
 }

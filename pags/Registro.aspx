@@ -161,7 +161,7 @@
                 <br />
             </td>
             <td>
-                <asp:DropDownList ID="DropDownListCarrera" runat="server" class="dropstilo" AutoPostBack="True" OnSelectedIndexChanged="DropDownListCarrera_SelectedIndexChanged">
+                <asp:DropDownList ID="DropDownListCarrera" runat="server" class="dropstilo" AutoPostBack="True" >
                 </asp:DropDownList>
                 <br />
             </td>

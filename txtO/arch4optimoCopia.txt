@@ -1,2 +1,3 @@
 0,0,0,0
 1,[2] Retalhuleu,[1] Licenciatura en Ciencias Jurídicas y Sociales Abogado y Notario,[1] Matutina
+66,[2] Retalhuleu,[2] Ingenieríaen Sistemas Informática y Cienciasde la Computación,[2] FinDeSemana

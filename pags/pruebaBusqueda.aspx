@@ -62,6 +62,7 @@
         </asp:GridView>
 
         <%--<h4>AGREGAR INFORMACION UNIVERSITARIA</h4>--%>
+        <br />
         <asp:GridView ID="GridViewDetalles" runat="server" AutoGenerateColumns="True">
         </asp:GridView>
 
