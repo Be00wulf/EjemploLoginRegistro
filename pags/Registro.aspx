@@ -89,7 +89,7 @@
 
         <tr>
             <td>
-                <asp:DropDownList ID="DropDownListGenero" runat="server" class="dropstilo" AutoPostBack="true" >
+                <asp:DropDownList ID="DropDownListGenero" runat="server" class="dropstilo" AutoPostBack="true" OnSelectedIndexChanged="DropDownListGenero_SelectedIndexChanged" >
                 </asp:DropDownList>
                 <br />
             </td>

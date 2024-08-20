@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -31,6 +32,7 @@ namespace pmLOGIN.pags
                 CargarEstadoCivil();
                 CargarMunicipio();
                 CargarSede();
+                CargarCarreraPlanSegunSede();
             }
         }
 
@@ -281,6 +283,17 @@ namespace pmLOGIN.pags
             string tituloFecha = TextBoxTituloFecha.Text;
             string institucion = TextBoxInstitucion.Text;
 
+            //para los filtros
+            string pais_Cod = DropDownListPais.SelectedValue;
+            string genero_Cod = DropDownListGenero.SelectedValue;
+            string estadoCivil_Cod = DropDownListEstadoCivil.SelectedValue;
+            string departamento_Cod = DropDownListDepto.SelectedValue;
+            string municipio_Cod = DropDownListMunicipio.SelectedValue;
+            string sesde_Cod = DropDownListSede.SelectedValue;
+            string carrera_Cod = DropDownListCarrera.SelectedValue;
+            string plan_Cod = DropDownListPlan.SelectedValue;
+
+
             if (
                 (nombre1 != "" &&
                 apellido1 != "" &&
@@ -330,22 +343,29 @@ namespace pmLOGIN.pags
                     $"{tituloFecha}," +
                     $"{institucion}";
 
-                string path = Server.MapPath("~/txt/Inscripciones2.txt");
+                string path = Server.MapPath("~/txt/Inscripciones3.txt");
                 using (StreamWriter escribir = new StreamWriter(path, true))
                 {
                     escribir.WriteLine(linea);
                 }
-
                 Response.Write("<script language=javascript>alert('Se ha ingresado el cliente exitosamente')</script>");
 
-                Session["PaisSeleccionado"] = DropDownListPais.SelectedValue;
-                Session["GeneroSeleccionado"] = DropDownListGenero.SelectedValue;
-                Session["EstadoCivilSeleccionado"] = DropDownListEstadoCivil.SelectedValue;
-                Session["DeptoSeleccionado"] = DropDownListDepto.SelectedValue;
-                Session["MunicipioSeleccionado"] = DropDownListMunicipio.SelectedValue;
-                Session["SedeSeleccionado"] = DropDownListSede.SelectedValue;
-                Session["CarreraSeleccionado"] = DropDownListCarrera.SelectedValue;
-                Session["PlanSeleccionado"] = DropDownListPlan.SelectedValue;
+                //guardando solo los codigos para aplicar filtro en otro archivo
+                string linea_Cod = $"{cui}," +
+                    $"{pais_Cod}," +
+                    $"{genero_Cod}," +
+                    $"{estadoCivil_Cod}," +
+                    $"{departamento_Cod}," +
+                    $"{municipio_Cod}," +
+                    $"{sesde_Cod}," +
+                    $"{carrera_Cod}," +
+                    $"{plan_Cod}";
+
+                string path_Cod = Server.MapPath("~/txt/Inscripciones3Opt.txt");
+                using (StreamWriter escribir2 = new StreamWriter(path_Cod, true))
+                {
+                    escribir2.WriteLine(linea_Cod);
+                }
             }
 
             else
