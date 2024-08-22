@@ -53,6 +53,8 @@ namespace pmLOGIN.pags
 
         protected void FiltrarPorPais()
         {
+            lblMensaje.Text = "RESULTADOS RELACIONADOS CON LA BÚSQUEDA: ";
+
             string paisSeleccionado = DropDownListPais.SelectedValue;
             string generoSeleccionado = DropDownListGenero.SelectedValue;
             string estadoCivilSeleccionado = DropDownListEstadoCivil.SelectedValue;
@@ -65,7 +67,7 @@ namespace pmLOGIN.pags
             string[] lineas = File.ReadAllLines(Server.MapPath("~/txt/Inscripciones3Opt.txt"));
 
             DataTable tablaFiltrada = new DataTable();
-            tablaFiltrada.Columns.Add("CUI"); 
+            tablaFiltrada.Columns.Add("CUI");
             tablaFiltrada.Columns.Add("País");
             tablaFiltrada.Columns.Add("Genero");
             tablaFiltrada.Columns.Add("Estado Civil");
@@ -75,6 +77,7 @@ namespace pmLOGIN.pags
             tablaFiltrada.Columns.Add("Carrera");
             tablaFiltrada.Columns.Add("Plan");
 
+            // Filtrar los datos en tablaFiltrada
             foreach (string linea in lineas)
             {
                 string[] valores = linea.Split(',');
@@ -107,7 +110,6 @@ namespace pmLOGIN.pags
                     if (!coincide && !string.IsNullOrEmpty(planSeleccionado) && valores[8] == planSeleccionado)
                         coincide = true;
 
-                    // si coincide con al menos un filtro agregar a la tabla filtrada
                     if (coincide)
                     {
                         DataRow fila = tablaFiltrada.NewRow();
@@ -125,27 +127,100 @@ namespace pmLOGIN.pags
                 }
             }
 
-            if (tablaFiltrada.Rows.Count > 0)
+            //add
+            // buscar la coincidencia del cui de la tabla de codigos
+            DataTable nuevaTablaFiltrada = new DataTable();
+            nuevaTablaFiltrada.Columns.Add("Primer nombre");
+            nuevaTablaFiltrada.Columns.Add("Segundo nombre");
+            nuevaTablaFiltrada.Columns.Add("Otros nombres");
+            nuevaTablaFiltrada.Columns.Add("Primer apellido");
+            nuevaTablaFiltrada.Columns.Add("Segundo apellido");
+            nuevaTablaFiltrada.Columns.Add("Apellido de casada");
+            nuevaTablaFiltrada.Columns.Add("CUI");
+            nuevaTablaFiltrada.Columns.Add("Fecha de Nacimiento");
+            nuevaTablaFiltrada.Columns.Add("País de nacimiento");
+            nuevaTablaFiltrada.Columns.Add("Género");
+            nuevaTablaFiltrada.Columns.Add("Estado Civil");
+            nuevaTablaFiltrada.Columns.Add("Dirección");
+            nuevaTablaFiltrada.Columns.Add("Departamento");
+            nuevaTablaFiltrada.Columns.Add("Municipio");
+            nuevaTablaFiltrada.Columns.Add("Telefono");
+            nuevaTablaFiltrada.Columns.Add("Correo");
+            nuevaTablaFiltrada.Columns.Add("Contacto de Emergencia");
+            nuevaTablaFiltrada.Columns.Add("Telefono de Emergencia");
+            nuevaTablaFiltrada.Columns.Add("Sede");
+            nuevaTablaFiltrada.Columns.Add("Carrera");
+            nuevaTablaFiltrada.Columns.Add("Plan");
+            nuevaTablaFiltrada.Columns.Add("Titulo");
+            nuevaTablaFiltrada.Columns.Add("Fecha Del Titulo");
+            nuevaTablaFiltrada.Columns.Add("Institucion");
+
+            // Comparar los CUI de tablaFiltrada con el archivo Inscripciones3.txt
+            foreach (DataRow filaFiltrada in tablaFiltrada.Rows)
             {
-                GridViewDatos.DataSource = tablaFiltrada;
-                GridViewDatos.DataBind();
+                string cuiFiltrado = filaFiltrada["CUI"].ToString(); 
+
+                string[] lineasInscripciones = File.ReadAllLines(Server.MapPath("~/txt/Inscripciones3.txt"));
+
+                foreach (string linea in lineasInscripciones)
+                {
+                    string[] valoresInscripciones = linea.Split(',');
+
+                    if (valoresInscripciones.Length >= 7 && valoresInscripciones[6] == cuiFiltrado) // Comparar CUI en la séptima columna
+                    {
+                        DataRow nuevaFila = nuevaTablaFiltrada.NewRow();
+                        nuevaFila["Primer nombre"] = valoresInscripciones[0];
+                        nuevaFila["Segundo nombre"] = valoresInscripciones[1];
+                        nuevaFila["Otros nombres"] = valoresInscripciones[2];
+                        nuevaFila["Primer apellido"] = valoresInscripciones[3];
+                        nuevaFila["Segundo apellido"] = valoresInscripciones[4];
+                        nuevaFila["Apellido de casada"] = valoresInscripciones[5];
+                        nuevaFila["CUI"] = valoresInscripciones[6];
+                        nuevaFila["Fecha de Nacimiento"] = valoresInscripciones[7];
+                        nuevaFila["País de nacimiento"] = valoresInscripciones[8];
+                        nuevaFila["Género"] = valoresInscripciones[9];
+                        nuevaFila["Estado Civil"] = valoresInscripciones[10];
+                        nuevaFila["Dirección"] = valoresInscripciones[11];
+                        nuevaFila["Departamento"] = valoresInscripciones[12];
+                        nuevaFila["Municipio"] = valoresInscripciones[13];
+                        nuevaFila["Telefono"] = valoresInscripciones[14];
+                        nuevaFila["Correo"] = valoresInscripciones[15];
+                        nuevaFila["Contacto de Emergencia"] = valoresInscripciones[16];
+                        nuevaFila["Telefono de Emergencia"] = valoresInscripciones[17];
+                        nuevaFila["Sede"] = valoresInscripciones[18];
+                        nuevaFila["Carrera"] = valoresInscripciones[19];
+                        nuevaFila["Plan"] = valoresInscripciones[20];
+                        nuevaFila["Titulo"] = valoresInscripciones[21];
+                        nuevaFila["Fecha Del Titulo"] = valoresInscripciones[22];
+                        nuevaFila["Institucion"] = valoresInscripciones[23];
+
+                        nuevaTablaFiltrada.Rows.Add(nuevaFila);
+                    }
+                }
+            }
+
+            if (nuevaTablaFiltrada.Rows.Count > 0)
+            {
+                GridViewDatos.Visible = false;
+                GridViewNuevosDatos.DataSource = nuevaTablaFiltrada;
+                GridViewNuevosDatos.DataBind();
                 lblMensaje.Visible = false;
             }
             else
             {
-                lblMensaje.Text = "No se encontraron resultados para los filtros seleccionados.";
+                GridViewDatos.Visible = false;
+                lblMensaje.Text = "No se encontraron coincidencias.";
                 lblMensaje.Visible = true;
-                GridViewDatos.DataSource = null;
-                GridViewDatos.DataBind();
+                GridViewNuevosDatos.DataSource = null;
+                GridViewNuevosDatos.DataBind();
             }
-            //// Asignar la tabla filtrada al GridView
-            //GridViewDatos.DataSource = tablaFiltrada;
-            //GridViewDatos.DataBind();
         }
-
 
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
+            LabelResulta2.Visible = true;
+            GridViewDatos.Visible = false;
+            GridViewNuevosDatos.Visible = true;
             FiltrarPorPais();
         }
 
@@ -430,6 +505,25 @@ namespace pmLOGIN.pags
         protected void DropDownListSede_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarCarreraPlanSegunSede();
+        }
+
+        protected void btnLimpiaFiltro_Click(object sender, EventArgs e)
+        {
+            LabelResulta2.Visible = false;
+            GridViewDatos.Visible = true;
+            GridViewNuevosDatos.Visible = false;
+            lblMensaje.Text = "";
+
+            CargarPais();
+            CargarGenero();
+            CargarDepartamento();
+            CargarEstadoCivil();
+            CargarMunicipio();
+            CargarSede();
+            CargarCarreraPlanSegunSede();
+
+            CargarDatos();
+
         }
     }
 }

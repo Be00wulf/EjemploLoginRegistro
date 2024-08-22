@@ -35,15 +35,21 @@
                 </asp:DropDownList>
 
         &nbsp;
-            <asp:TextBox ID="txtBuscar" runat="server" placeholder="Buscar por CUI" CssClass="estilotxtBox"></asp:TextBox>
+            <asp:TextBox ID="txtBuscar" runat="server" placeholder="Buscar por CUI" CssClass="estilotxtBox" Visible="False"></asp:TextBox>
 &nbsp;<asp:Button ID="btnFiltrar" class="btn-primary" runat="server" Text="APLICAR FILTROS" OnClick="btnFiltrar_Click"/>
+
+        &nbsp;<asp:Button ID="btnLimpiaFiltro" class="btn-primary" runat="server" Text="LIMPIAR FILTROS" OnClick="btnLimpiaFiltro_Click" />
 
         </td>
     </tr>
 
      <tr>
          <td>
-             <asp:Label ID="lblMensaje" runat="server" class="textoSimple" Text="Label"></asp:Label>
+             <br />
+            <asp:Label ID="LabelResulta2" runat="server" class="textoSimple" Text="RESULTADOS RELACIONADOS CON LA BÚSQUEDA: " Visible="False"></asp:Label>
+             <br />
+             <br />
+             <asp:Label ID="lblMensaje" runat="server" class="textoSimple" Text="Datos:"></asp:Label>
              <br />
              <asp:GridView ID="GridViewDatos" runat="server" BackColor="red" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
                  <FooterStyle BackColor="red" />
@@ -61,11 +67,37 @@
 
      <tr>
          <td>
-             <asp:GridView ID="GridViewResultado" runat="server" AutoGenerateColumns="true">
+             <asp:GridView ID="GridViewResultado" runat="server" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" Visible="False">
+                 <FooterStyle BackColor="#CCCCCC" />
+                 <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="black" />
+                 <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
+                 <RowStyle BackColor="White" />
+                 <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                 <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                 <SortedAscendingHeaderStyle BackColor="#808080" />
+                 <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                 <SortedDescendingHeaderStyle BackColor="#383838" />
              </asp:GridView>
 
          </td>
      </tr>
+
+     <tr>
+        <td>
+            <asp:GridView ID="GridViewNuevosDatos" runat="server" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
+                <FooterStyle BackColor="#CCCCCC" />
+                <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="black" />
+                <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
+                <RowStyle BackColor="White" />
+                <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                <SortedAscendingHeaderStyle BackColor="#808080" />
+                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                <SortedDescendingHeaderStyle BackColor="#383838" />
+            </asp:GridView>
+
+        </td>
+    </tr>
  </table>
 
 </asp:Content>
